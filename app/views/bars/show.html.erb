@@ -1,0 +1,16 @@
+<div class="body">
+  <h1><%= @bar.name %></h1>
+    <div class="callout secondary">
+      <%= @bar.description %>
+    </div>
+
+    <div class="callout">
+      <%= @bar.address %>
+      <%= @bar.city %>
+      <%= @bar.state %>
+      <%= @bar.zip %>
+    </div>
+
+    <%= link_to 'Edit', edit_bar_path(@bar) %>
+    <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

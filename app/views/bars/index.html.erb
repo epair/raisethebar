@@ -1,0 +1,10 @@
+<div class="body">
+  <h1>List of Bars</h1>
+</div>
+<ul>
+  <% @bars.each do |bar| %>
+  <div class="callout secondary">
+    <li> <%= link_to bar.name, bar_path(bar)  %></li>
+  </div>
+  <% end %>
+</ul>
