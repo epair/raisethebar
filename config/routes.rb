@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   root "bars#index"
-  resources :bars
+  resources :bars do
+    resources :reviews
+  end
 end
