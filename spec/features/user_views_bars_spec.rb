@@ -7,21 +7,21 @@ require 'rails_helper'
 feature 'user views list of bars' do
   let!(:bar) do
     Bar.create(
-    name: 'Punters',
-    address: '40 Huntington Ave',
-    city: 'Boston',
-    state: 'MA',
-    zip: '02120'
+      name: 'Punters',
+      address: '40 Huntington Ave',
+      city: 'Boston',
+      state: 'MA',
+      zip: '02120'
     )
   end
 
   let!(:bartwo) do
     Bar.create(
-    name: 'Conners',
-    address: '20 Tremont Ave',
-    city: 'Boston',
-    state: 'MA',
-    zip: '02115'
+      name: 'Conners',
+      address: '20 Tremont Ave',
+      city: 'Boston',
+      state: 'MA',
+      zip: '02115'
     )
   end
 
