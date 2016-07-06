@@ -9,10 +9,16 @@ require 'rails_helper'
 # [] Name is unique
 # [] user is signed in
 
-feature 'user creates bar' do
+feature 'user signs in and user creates bar' do
   scenario 'user fills out bar creation form successfully' do
-    visit new_bar_path
+    visit new_user_session_path
+    user = FactoryGirl.create(:user)
+    visit new_user_session_path
+    fill_in 'Username', with: user.username
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
 
+    click_link 'Add Bar'
     fill_in 'Name', with: 'Jacob Wirths'
     fill_in 'Address', with: '31 Stewart Street'
     fill_in 'City', with: 'Boston'
@@ -31,8 +37,14 @@ feature 'user creates bar' do
   end
 
   scenario 'user fills out bar creation form unsuccessfully' do
-    visit new_bar_path
+    visit new_user_session_path
+    user = FactoryGirl.create(:user)
+    visit new_user_session_path
+    fill_in 'Username', with: user.username
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
 
+    click_link 'Add Bar'
     fill_in 'Name', with: ''
     fill_in 'Address', with: ''
     fill_in 'City', with: ''
@@ -41,9 +53,9 @@ feature 'user creates bar' do
 
     click_button 'Create Bar'
 
-    expect(page).to have_content('Name can\'t be blank, Address can\'t be blank')
-    expect(page).to have_content('State can\'t be blank, City can\'t be blank')
-    expect(page).to have_content('Zip can\'t be blank, Zip is not a number')
-    expect(page).to have_content('Zip is the wrong length')
+    expect(page).to have_content("Name can't be blank, Address can't be blank")
+    expect(page).to have_content("State can't be blank, City can't be blank")
+    expect(page).to have_content("Zip can't be blank, Zip is not a number")
+    expect(page).to have_content("Zip is the wrong length")
   end
 end

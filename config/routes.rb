@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     as :user do
       get '/' => 'devise/registrations#new'
     end
+    resources :bars
 
-    
+
 end
