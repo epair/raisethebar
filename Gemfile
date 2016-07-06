@@ -7,13 +7,14 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'foundation-rails'
+gem 'devise'
 
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
-  gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'valid_attribute'
 end
 
