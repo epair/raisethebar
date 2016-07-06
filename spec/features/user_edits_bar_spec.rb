@@ -3,12 +3,12 @@ require 'rails_helper'
 feature 'user edits bar' do
   let!(:bar) do
     Bar.create(
-    name: 'Punters',
-    address: '40 Huntington Ave',
-    city: 'Boston',
-    state: 'MA',
-    zip: '02120',
-    description: 'An awful college dive bar.'
+      name: 'Punters',
+      address: '40 Huntington Ave',
+      city: 'Boston',
+      state: 'MA',
+      zip: '02120',
+      description: 'An awful college dive bar.'
     )
   end
 

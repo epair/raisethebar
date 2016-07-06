@@ -10,19 +10,6 @@ require 'rails_helper'
 # [] user is signed in
 
 feature 'user creates bar' do
-
-  # before do
-  #   @name = 'Guest'
-  #   @password = 'guest123'
-  #   visit root_path
-  #   click_link 'Sign In'
-  #
-  #   fill_in 'Name', with: @name
-  #   fill_in 'Password', with: @password
-  #
-  #   click_link 'Sign In'
-  # end
-
   scenario 'user fills out bar creation form successfully' do
     visit new_bar_path
 
@@ -54,6 +41,9 @@ feature 'user creates bar' do
 
     click_button 'Create Bar'
 
-    expect(page).to have_content("Name can't be blank, Address can't be blank, State can't be blank, City can't be blank, Zip can't be blank, Zip is not a number, Zip is the wrong length (should be 5 characters)")
+    expect(page).to have_content("Name can't be blank, Address can't be blank")
+    expect(page).to have_content("State can't be blank, City can't be blank")
+    expect(page).to have_content("Zip can't be blank, Zip is not a number")
+    expect(page).to have_content("Zip is the wrong length (should be 5 characters)")
   end
 end

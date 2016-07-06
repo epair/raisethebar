@@ -7,12 +7,12 @@ require 'rails_helper'
 feature 'user deletes bar' do
   let!(:bar) do
     Bar.create(
-    name: 'Punters',
-    address: '40 Huntington Ave',
-    city: 'Boston',
-    state: 'MA',
-    zip: '02120',
-    description: 'An awful college dive bar.'
+      name: 'Punters',
+      address: '40 Huntington Ave',
+      city: 'Boston',
+      state: 'MA',
+      zip: '02120',
+      description: 'An awful college dive bar.'
     )
   end
 
@@ -26,6 +26,5 @@ feature 'user deletes bar' do
     expect(page).to_not have_content(bar.name)
     expect(page).to have_content('List of Bars')
     expect(current_url).to eq('http://www.example.com/bars')
-
   end
 end

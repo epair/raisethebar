@@ -4,12 +4,12 @@ require 'rails_helper'
 feature 'user sees bar details' do
   let!(:bar) do
     Bar.create(
-    name: 'Punters',
-    address: '40 Huntington Ave',
-    city: 'Boston',
-    state: 'MA',
-    zip: '02120',
-    description: 'An awful college dive bar.'
+      name: 'Punters',
+      address: '40 Huntington Ave',
+      city: 'Boston',
+      state: 'MA',
+      zip: '02120',
+      description: 'An awful college dive bar.'
     )
   end
 
@@ -23,6 +23,5 @@ feature 'user sees bar details' do
     expect(page).to have_content(bar.state)
     expect(page).to have_content(bar.zip)
     expect(page).to have_content(bar.description)
-
   end
 end
