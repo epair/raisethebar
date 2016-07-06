@@ -6,10 +6,10 @@ class BarsController < ApplicationController
   def create
     @bar = Bar.new(params_bar)
     if @bar.save
-      flash[:notice] = "Bar successfully added!"
+      flash[:notice] = 'Bar successfully added!'
       redirect_to bar_path(@bar)
     else
-      flash[:error] = @bar.errors.full_messages.join(", ")
+      flash[:error] = @bar.errors.full_messages.join(', ')
       render :new
     end
   end
