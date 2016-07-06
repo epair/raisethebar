@@ -1,12 +1,21 @@
-require "rails_helper"
+require 'rails_helper'
 
 
-feature "user sees bar details" do
-  let!(:bar){Bar.create(name: "Punters", address: "40 Huntington Ave", city: "Boston", state: "MA", zip: "02120", description: "An awful college dive bar.")}
+feature 'user sees bar details' do
+  let!(:bar) do
+    Bar.create(
+    name: 'Punters',
+    address: '40 Huntington Ave',
+    city: 'Boston',
+    state: 'MA',
+    zip: '02120',
+    description: 'An awful college dive bar.'
+    )
+  end
 
-  scenario "user views details of a bar on its show page" do
+  scenario 'user views details of a bar on its show page' do
     visit bars_path
-    click_link "Punters"
+    click_link 'Punters'
 
     expect(page).to have_content(bar.name)
     expect(page).to have_content(bar.address)
