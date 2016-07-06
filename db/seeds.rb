@@ -5,17 +5,3 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Bar.create([
-  {name: 'The Mission',
-    address: '20 Huntington Ave',
-    city: Faker::Address.city,
-    state: 'MA',
-    zip: '02115',
-    description: Faker::Lorem.paragraph},
-  {name: Faker::Name.name,
-    address: '20 Huntington Ave',
-    city: Faker::Address.city,
-    state: 'MA',
-    zip: '02115',
-    description: Faker::Lorem.paragraph}
-])
