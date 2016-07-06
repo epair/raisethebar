@@ -1,5 +1,4 @@
-<%= form_for(@review) do |f| %>
-
+<%= form_for([@bar, @review]) do |f| %>
   <%= f.label :body, "Review Body" %>
   <%= f.text_field :body %>
 

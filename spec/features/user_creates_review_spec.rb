@@ -22,6 +22,7 @@ let!(:bar){Bar.create(name: "Punters", address: "40 Huntington Ave", city: "Bost
 
   scenario "user fills out review creation form unsuccessfully" do
     visit bars_path
+    click_link bar.name
 
     fill_in "Review Body", with: ""
     fill_in "Rating", with: ""
@@ -29,6 +30,6 @@ let!(:bar){Bar.create(name: "Punters", address: "40 Huntington Ave", city: "Bost
 
     click_button "Create Review"
 
-    expect(page).to have_content("Invalid")
+    expect(page).to have_content("Body can't be blank, Rating can't be blank, Price can't be blank")
   end
 end
