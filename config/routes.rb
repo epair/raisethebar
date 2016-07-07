@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
-    as :user do
-      get '/' => 'devise/registrations#new'
-    end
-    resources :bars
-    resources :profiles, only: :show
+  as :user do
+    get '/' => 'devise/registrations#new'
+  end
+  resources :bars
+  resources :profiles, only: :show
 end

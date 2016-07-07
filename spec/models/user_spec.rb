@@ -6,7 +6,6 @@ describe User do
   it { should have_valid(:username).when('user1', 'user2') }
   it { should_not have_valid(:username).when(nil, '') }
 
-
   it { should have_valid(:email).when('user@example.com', 'another@example.com') }
   it { should_not have_valid(:email).when(nil, '') }
 

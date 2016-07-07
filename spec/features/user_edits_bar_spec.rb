@@ -51,7 +51,6 @@ feature 'user edits bar' do
     fill_in 'Name', with: 'The Mission'
     fill_in 'Address', with: ''
     fill_in 'Zip', with: 'unknown'
-
     click_button 'Update Bar'
 
     expect(page).to have_content("Address can't be blank, Zip is not a number,")
