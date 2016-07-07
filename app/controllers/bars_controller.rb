@@ -5,6 +5,7 @@ class BarsController < ApplicationController
 
   def create
     @bar = Bar.new(params_bar)
+    @bar.user = current_user
     if @bar.save
       flash[:notice] = 'Bar successfully added!'
       redirect_to bar_path(@bar)
