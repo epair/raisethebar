@@ -14,6 +14,18 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @review = Review.find(params[:id])
+    @bar = Bar.find(params[:bar_id])
+    if @review.update(review_params)
+      flash[:success] = 'Review successfully updated'
+      redirect_to bar_path(@bar)
+    else
+      flash[:errors] = @review.errors.full_messages.join(', ')
+      render :edit
+    end
+  end
+
   private
   def review_params
     params.require(:review).permit(:body, :rating, :price)
