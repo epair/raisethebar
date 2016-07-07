@@ -1,0 +1,14 @@
+<div class="body">
+  <%= link_to 'Edit Account Info', edit_user_registration_path %>
+
+  <h1><%= @users_name %></h1>
+
+  <div>
+    <% @users_bar.each do |bar|%>
+    <div>
+      <%= link_to bar.name, bar_path(bar)  %>
+    </div>
+    <% end %>
+  </div>
+
+</div>
