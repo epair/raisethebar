@@ -10,14 +10,15 @@ require 'rails_helper'
 # [] user is signed in
 
 feature 'user signs in and user creates bar' do
-  scenario 'user fills out bar creation form successfully' do
-    visit new_user_session_path
+  before do
     user = FactoryGirl.create(:user)
     visit new_user_session_path
     fill_in 'Username', with: user.username
     fill_in 'Password', with: user.password
     click_button 'Log in'
+  end
 
+  scenario 'user fills out bar creation form successfully' do
     click_link 'Add Bar'
     fill_in 'Name', with: 'Jacob Wirths'
     fill_in 'Address', with: '31 Stewart Street'
@@ -35,13 +36,6 @@ feature 'user signs in and user creates bar' do
   end
 
   scenario 'user fills out bar creation form unsuccessfully' do
-    visit new_user_session_path
-    user = FactoryGirl.create(:user)
-    visit new_user_session_path
-    fill_in 'Username', with: user.username
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-
     click_link 'Add Bar'
     fill_in 'Name', with: ''
     fill_in 'Address', with: ''
