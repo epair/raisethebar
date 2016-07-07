@@ -2,6 +2,9 @@ require 'rails_helper'
 
 
 feature 'user sees bar details' do
+  let!(:user) do
+    FactoryGirl.create(:user)
+  end
   let!(:bar) do
     Bar.create(
       name: 'Punters',
@@ -9,11 +12,17 @@ feature 'user sees bar details' do
       city: 'Boston',
       state: 'MA',
       zip: '02120',
-      description: 'An awful college dive bar.'
+      description: 'An awful college dive bar.',
+      user_id: user.id
     )
   end
 
   scenario 'user views details of a bar on its show page' do
+    visit new_user_session_path
+    fill_in 'Username', with: user.username
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+
     visit bars_path
     click_link 'Punters'
 

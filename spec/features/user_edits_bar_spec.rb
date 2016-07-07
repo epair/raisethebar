@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 feature 'user edits bar' do
+  let!(:user) do
+    FactoryGirl.create(:user)
+  end
+
   let!(:bar) do
     Bar.create(
       name: 'Punters',
@@ -8,12 +12,18 @@ feature 'user edits bar' do
       city: 'Boston',
       state: 'MA',
       zip: '02120',
-      description: 'An awful college dive bar.'
+      description: 'An awful college dive bar.',
+      user_id: user.id
     )
   end
 
+
   scenario 'user visits detail page and edits bar info successfully' do
-    visit bars_path
+    visit new_user_session_path
+    fill_in 'Username', with: user.username
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+
     click_link bar.name
     click_link 'Edit'
 
@@ -29,6 +39,11 @@ feature 'user edits bar' do
   end
 
   scenario 'user visits detail page and edits bar info unsuccessfully' do
+    visit new_user_session_path
+    fill_in 'Username', with: user.username
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+
     visit bars_path
     click_link bar.name
     click_link 'Edit'
@@ -41,5 +56,15 @@ feature 'user edits bar' do
 
     expect(page).to have_content("Address can't be blank, Zip is not a number,")
     expect(page).to have_content("Zip is the wrong length (should be 5 characters)")
+  end
+  scenario 'user does not see edit link on bar detail page they did not create' do
+    user2 = FactoryGirl.create(:user)
+    visit new_user_session_path
+    fill_in 'Username', with: user2.username
+    fill_in 'Password', with: user2.password
+    click_button 'Log in'
+    click_link bar.name
+
+    expect(page).to_not have_content('Edit')
   end
 end

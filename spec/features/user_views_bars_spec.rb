@@ -5,6 +5,9 @@ require 'rails_helper'
 # So that I can pick bars to review
 
 feature 'user views list of bars' do
+  let!(:user) do
+    FactoryGirl.create(:user)
+  end
   let!(:bar) do
     Bar.create(
       name: 'Punters',
@@ -26,6 +29,11 @@ feature 'user views list of bars' do
   end
 
   scenario 'user sees list of bars' do
+    visit new_user_session_path
+    fill_in 'Username', with: user.username
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+
     visit bars_path
     expect(page).to have_content('List of Bars')
     expect(page).to have_content(bar.name)
