@@ -17,7 +17,6 @@ feature 'user edits bar' do
     )
   end
 
-
   scenario 'user visits detail page and edits bar info successfully' do
     visit new_user_session_path
     fill_in 'Username', with: user.username
