@@ -8,9 +8,9 @@
 </head>
 <body>
   <% if user_signed_in? %>
-    <li>
+    <div>
       <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
-    </li>
+    </div>
   <% end %>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>

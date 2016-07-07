@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  
   protected
 
   def sign_up(resource_name, resource)
@@ -8,6 +9,4 @@ class RegistrationsController < Devise::RegistrationsController
     binding.pry
     new_user_session_path
   end
-
-
 end

@@ -25,8 +25,6 @@ feature 'user signs in and user creates bar' do
     fill_in 'State', with: 'Massachusetts'
     fill_in 'Zip', with: '02120'
 
-    # expect(page).to have_content('Sign Out')
-
     click_button 'Create Bar'
 
     expect(page).to have_content('Jacob Wirths')

@@ -39,6 +39,7 @@ feature 'user edits bar' do
 
     click_button 'Update Bar'
 
-    expect(page).to have_content("Address can't be blank, Zip is not a number, Zip is the wrong length (should be 5 characters)")
+    expect(page).to have_content("Address can't be blank, Zip is not a number,")
+    expect(page).to have_content("Zip is the wrong length (should be 5 characters)")
   end
 end

@@ -10,7 +10,6 @@ feature 'user signs in' do
 
     expect(page).to have_content('Welcome Back!')
     expect(page).to have_content('Sign Out')
-
   end
   scenario 'user specifies invalid username and password' do
     visit new_user_session_path
@@ -46,5 +45,4 @@ feature 'user signs in' do
 
     expect(page).to have_content('Sign up')
   end
-
 end
