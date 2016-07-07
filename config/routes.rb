@@ -4,6 +4,4 @@ Rails.application.routes.draw do
       get '/' => 'devise/registrations#new'
     end
     resources :bars
-
-
 end
