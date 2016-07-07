@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  root 'bars#index'
-  resources :bars
+  devise_for :users, controllers: { registrations: "registrations" }
+    as :user do
+      get '/' => 'devise/registrations#new'
+    end
+    resources :bars
 end

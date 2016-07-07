@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 feature 'user sees bar details' do
   let!(:bar) do
     Bar.create(

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Raisethebar</title>
+  <title>RaiseTheBar</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -10,8 +10,13 @@
 
 </head>
 <body>
+  <% if user_signed_in? %>
+    <div>
+      <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+    </div>
+  <% end %>
   <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: "alert alert-info" %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
 
 <%= yield %>
