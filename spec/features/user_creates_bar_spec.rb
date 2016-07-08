@@ -7,16 +7,11 @@ require 'rails_helper'
 # [] Requires name and address - there is an error when none is provided
 # [] Name is unique
 # [] user is signed in
-feature 'user signs in and user creates bar' do
-  before do
-    user = FactoryGirl.create(:user)
-    visit new_user_session_path
-    fill_in 'Username', with: user.username
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-  end
+feature 'user signs in and user creates bar', :devise do
+  let!(:user){ FactoryGirl.create(:user) }
 
   scenario 'user fills out bar creation form successfully' do
+    login_user(user)
     click_link 'Add Bar'
     fill_in 'Name', with: 'Jacob Wirths'
     fill_in 'Address', with: '31 Stewart Street'
@@ -34,6 +29,7 @@ feature 'user signs in and user creates bar' do
   end
 
   scenario 'user fills out bar creation form unsuccessfully' do
+    login_user(user)
     click_link 'Add Bar'
     fill_in 'Name', with: ''
     fill_in 'Address', with: ''

@@ -10,11 +10,7 @@ feature 'user views list of bars' do
   let!(:bartwo){ FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user sees list of bars' do
-    visit new_user_session_path
-    fill_in 'Username', with: user.username
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-
+    login_user(user)
     visit bars_path
     expect(page).to have_content('List of Bars')
     expect(page).to have_content(bar.name)
