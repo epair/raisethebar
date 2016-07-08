@@ -5,4 +5,5 @@ class Bar < ActiveRecord::Base
   validates :state, presence: true
   validates :city, presence: true
   validates :zip, presence: true, numericality: true, length: { is: 5 }
+  validates :photo_url, presence: true
 end
