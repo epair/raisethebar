@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  root "bars#index"
+  devise_for :users, controllers: { registrations: "registrations" }
+  as :user do
+    get '/' => 'devise/registrations#new'
+  end
   resources :bars do
     resources :reviews
   end
+  resources :profiles, only: :show
 end

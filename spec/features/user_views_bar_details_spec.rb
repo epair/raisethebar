@@ -1,12 +1,13 @@
-require "rails_helper"
+require 'rails_helper'
 
+feature 'user sees bar details' do
+  let!(:user){ FactoryGirl.create(:user) }
+  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
 
-feature "user sees bar details" do
-  let!(:bar){Bar.create(name: "Punters", address: "40 Huntington Ave", city: "Boston", state: "MA", zip: "02120", description: "An awful college dive bar.")}
-
-  scenario "user views details of a bar on its show page" do
+  scenario 'user views details of a bar on its show page' do
+    login_user(user)
     visit bars_path
-    click_link "Punters"
+    click_link bar.name
 
     expect(page).to have_content(bar.name)
     expect(page).to have_content(bar.address)
@@ -14,6 +15,5 @@ feature "user sees bar details" do
     expect(page).to have_content(bar.state)
     expect(page).to have_content(bar.zip)
     expect(page).to have_content(bar.description)
-
   end
 end

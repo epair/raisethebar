@@ -1,5 +1,4 @@
-require "rails_helper"
-
+require 'rails_helper'
 # As an authenticated user
 # I want to add a bar
 # So that others can review it
@@ -8,52 +7,41 @@ require "rails_helper"
 # [] Requires name and address - there is an error when none is provided
 # [] Name is unique
 # [] user is signed in
+feature 'user signs in and user creates bar', :devise do
+  let!(:user){ FactoryGirl.create(:user) }
 
-feature "user creates bar" do
+  scenario 'user fills out bar creation form successfully' do
+    login_user(user)
+    click_link 'Add Bar'
+    fill_in 'Name', with: 'Jacob Wirths'
+    fill_in 'Address', with: '31 Stewart Street'
+    fill_in 'City', with: 'Boston'
+    fill_in 'State', with: 'Massachusetts'
+    fill_in 'Zip', with: '02120'
+    fill_in 'Bar Image', with: 'http://animals.sandiegozoo.org/sites/default/files/juicebox_slides/capybara_06.jpg'
+    click_button 'Create Bar'
 
-  # before do
-  #   @name = "Guest"
-  #   @password = "guest123"
-  #   visit root_path
-  #   click_link "Sign In"
-  #
-  #   fill_in "Name", with: @name
-  #   fill_in "Password", with: @password
-  #
-  #   click_link "Sign In"
-  # end
-
-  scenario "user fills out bar creation form successfully" do
-    visit new_bar_path
-
-    fill_in "Name", with: "Jacob Wirth's"
-    fill_in "Address", with: "31 Stewart Street"
-    fill_in "City", with: "Boston"
-    fill_in "State", with: "Massachusetts"
-    fill_in "Zip", with: "02120"
-
-    # expect(page).to have_content("Sign Out")
-
-    click_button "Create Bar"
-
-    expect(page).to have_content("Jacob Wirth's")
-    expect(page).to have_content("31 Stewart Street")
-    expect(page).to have_content("Boston")
-    expect(page).to have_content("Massachusetts")
-    expect(page).to have_content("02120")
+    expect(page).to have_content('Jacob Wirths')
+    expect(page).to have_content('31 Stewart Street')
+    expect(page).to have_content('Boston')
+    expect(page).to have_content('Massachusetts')
+    expect(page).to have_content('02120')
   end
 
-  scenario "user fills out bar creation form unsuccessfully" do
-    visit new_bar_path
+  scenario 'user fills out bar creation form unsuccessfully' do
+    login_user(user)
+    click_link 'Add Bar'
+    fill_in 'Name', with: ''
+    fill_in 'Address', with: ''
+    fill_in 'City', with: ''
+    fill_in 'State', with: ''
+    fill_in 'Zip', with: ''
 
-    fill_in "Name", with: ""
-    fill_in "Address", with: ""
-    fill_in "City", with: ""
-    fill_in "State", with: ""
-    fill_in "Zip", with: ""
+    click_button 'Create Bar'
 
-    click_button "Create Bar"
-
-    expect(page).to have_content("Name can't be blank, Address can't be blank, State can't be blank, City can't be blank, Zip can't be blank, Zip is not a number, Zip is the wrong length (should be 5 characters)")
+    expect(page).to have_content("Name can't be blank, Address can't be blank")
+    expect(page).to have_content("State can't be blank, City can't be blank")
+    expect(page).to have_content("Zip can't be blank, Zip is not a number")
+    expect(page).to have_content("Zip is the wrong length")
   end
 end

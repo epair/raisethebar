@@ -10,9 +10,10 @@
       <%= @bar.state %>
       <%= @bar.zip %>
     </div>
-
-    <%= link_to 'Edit', edit_bar_path(@bar) %>
-    <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if current_user.id == @bar.user_id %>
+      <%= link_to 'Edit', edit_bar_path(@bar) %>
+      <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
     <%= render 'reviews/form' %>
     <%= render @reviews %>
 </div>
