@@ -5,11 +5,12 @@ class BarsController < ApplicationController
 
   def create
     @bar = Bar.new(params_bar)
+    @bar.user = current_user
     if @bar.save
-      flash[:notice] = "Bar successfully added!"
+      flash[:notice] = 'Bar successfully added!'
       redirect_to bar_path(@bar)
     else
-      flash[:error] = @bar.errors.full_messages.join(", ")
+      flash[:error] = @bar.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -47,6 +48,6 @@ class BarsController < ApplicationController
 
   private
   def params_bar
-    params.require(:bar).permit(:name, :address, :city, :state, :zip, :description)
+    params.require(:bar).permit(:name, :address, :city, :state, :zip, :description, :photo_url)
   end
 end
