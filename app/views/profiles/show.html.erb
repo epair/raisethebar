@@ -11,4 +11,16 @@
     <% end %>
   </div>
 
+  <div>
+    <% @users_review.each do |review|%>
+    <div>
+      <%= review.title %>
+      <%= review.body %>
+      <%= review.rating %>
+      <%= review.price %>
+      <%= link_to "Edit Review", [:edit, review.bar, review]  %>
+    </div>
+    <% end %>
+  </div>
+
 </div>

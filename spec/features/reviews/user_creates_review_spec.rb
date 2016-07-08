@@ -9,6 +9,7 @@ feature "user creates review" do
     click_link bar.name
 
     fill_in "Review Body", with: "place sucked!"
+    fill_in "Title", with: "Title"
     fill_in "Rating", with: "2"
     fill_in "Price", with: "4"
 
@@ -29,6 +30,6 @@ feature "user creates review" do
 
     click_button "Create Review"
 
-    expect(page).to have_content("Body can't be blank, Rating can't be blank, Price can't be blank")
+    expect(page).to have_content("Body can't be blank, Rating can't be blank, Rating is not a number, Rating is the wrong length (should be 1 character), Price can't be blank, Price is not a number, Price is the wrong length (should be 1 character), Title can't be blank")
   end
 end
