@@ -5,30 +5,9 @@ require 'rails_helper'
 # So that I can pick bars to review
 
 feature 'user views list of bars' do
-  let!(:user) do
-    FactoryGirl.create(:user)
-  end
-  let!(:bar) do
-    Bar.create(
-      name: 'Punters',
-      address: '40 Huntington Ave',
-      city: 'Boston',
-      state: 'MA',
-      zip: '02120',
-      user_id: user.id
-    )
-  end
-
-  let!(:bartwo) do
-    Bar.create(
-      name: 'Conners',
-      address: '20 Tremont Ave',
-      city: 'Boston',
-      state: 'MA',
-      zip: '02115',
-      user_id: user.id
-    )
-  end
+  let!(:user){ FactoryGirl.create(:user) }
+  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
+  let!(:bartwo){ FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user sees list of bars' do
     visit new_user_session_path

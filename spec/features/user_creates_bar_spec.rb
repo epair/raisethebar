@@ -23,6 +23,7 @@ feature 'user signs in and user creates bar' do
     fill_in 'City', with: 'Boston'
     fill_in 'State', with: 'Massachusetts'
     fill_in 'Zip', with: '02120'
+    fill_in 'Bar Image', with: 'http://animals.sandiegozoo.org/sites/default/files/juicebox_slides/capybara_06.jpg'
     click_button 'Create Bar'
 
     expect(page).to have_content('Jacob Wirths')
