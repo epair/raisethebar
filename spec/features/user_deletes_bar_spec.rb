@@ -9,11 +9,7 @@ feature 'user deletes bar' do
   let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user visits bar show page and deletes bar' do
-    visit new_user_session_path
-    fill_in 'Username', with: user.username
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-
+    login_user(user)
     click_link bar.name
     click_link 'Delete'
 
@@ -24,10 +20,7 @@ feature 'user deletes bar' do
   end
   scenario 'user does not see delete link on bar detail page they did not create' do
     user2 = FactoryGirl.create(:user)
-    visit new_user_session_path
-    fill_in 'Username', with: user2.username
-    fill_in 'Password', with: user2.password
-    click_button 'Log in'
+    login_user(user2)
     click_link bar.name
 
     expect(page).to_not have_content('Delete')
