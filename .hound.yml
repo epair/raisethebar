@@ -1,10 +1,7 @@
 AllCops:
   Exclude:
     - db/schema.rb
-  #DisplayCopNames: true
-ruby:
-  config_file: .ruby-style.yml
-  
+
 AccessorMethodName:
   Enabled: false
 
@@ -121,7 +118,7 @@ LineEndConcatenation:
   Enabled: false
 
 LineLength:
-  Max: 180
+  Max: 80
 
 MethodLength:
   Enabled: false
@@ -278,3 +275,10 @@ Style/UnneededPercentQ:
 
 Metrics/AbcSize:
   Enabled: false
+
+ruby:
+  ignore_file: .hound_ignore
+  config_file: .ruby-style.yml
+
+scss:
+  config_file: .scss-style.yml
