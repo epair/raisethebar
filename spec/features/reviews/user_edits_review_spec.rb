@@ -1,23 +1,9 @@
 require "rails_helper"
 
 feature "user edits review" do
-  let!(:bar) do
-    Bar.create(
-      name: "Punters",
-      address: "40 Huntington Ave",
-      city: "Boston",
-      state: "MA",
-      zip: "02120"
-    )
-  end
-  let!(:review1) do
-    Review.create(
-    body: "this is a review",
-    rating: "4",
-    price: "1",
-    bar_id: bar.id
-  )
-  end
+  let!(:user){ FactoryGirl.create(:user) }
+  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
+  let!(:review1){ FactoryGirl.create(:review, bar_id: bar.id)}
 
   scenario "review creator edits review successfully" do
     visit bars_path

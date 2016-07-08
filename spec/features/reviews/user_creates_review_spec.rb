@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 feature "user creates review" do
-
-let!(:bar){Bar.create(name: "Punters", address: "40 Huntington Ave", city: "Boston", state: "MA", zip: "02120", description: "An awful college dive bar.")}
-
+  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
+  let!(:user){ FactoryGirl.create(:user) }
 
   scenario "user fills out review creation form successfully" do
-    visit bars_path
+    login_user(user)
     click_link bar.name
 
     fill_in "Review Body", with: "place sucked!"
@@ -21,7 +20,7 @@ let!(:bar){Bar.create(name: "Punters", address: "40 Huntington Ave", city: "Bost
   end
 
   scenario "user fills out review creation form unsuccessfully" do
-    visit bars_path
+    login_user(user)
     click_link bar.name
 
     fill_in "Review Body", with: ""
