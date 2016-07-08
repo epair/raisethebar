@@ -14,7 +14,8 @@ feature 'user views list of bars' do
       address: '40 Huntington Ave',
       city: 'Boston',
       state: 'MA',
-      zip: '02120'
+      zip: '02120',
+      user_id: user.id
     )
   end
 
@@ -24,7 +25,8 @@ feature 'user views list of bars' do
       address: '20 Tremont Ave',
       city: 'Boston',
       state: 'MA',
-      zip: '02115'
+      zip: '02115',
+      user_id: user.id
     )
   end
 
