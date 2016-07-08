@@ -11,10 +11,22 @@
 </head>
 <body>
   <% if user_signed_in? %>
-    <div>
-      <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
-      <%= link_to 'Profile', profile_path(current_user) %>
-      <%= link_to 'Home', bars_path %>
+    <div class="top_nav row">
+      <div id="sign_out" class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
+      <div class="nav_element"><%= link_to 'Profile', profile_path(current_user) %></div>
+      <div class="nav_element"><%= link_to 'Home', bars_path %></div>
+      <div>
+        <%= form_tag("/bars/search", method: "get") do %>
+        <ul class="menu">
+          <li>
+            <%= text_field_tag :q%>
+          </li>
+          <li>
+            <%= submit_tag("Search") %>
+          </li>
+        </ul>
+        <% end %>
+      </div>
     </div>
 
   <% end %>

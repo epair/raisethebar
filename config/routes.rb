@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   as :user do
     get '/' => 'devise/registrations#new'
   end
-  resources :bars
+  resources :bars do
+      collection do
+        get 'search'
+      end
+    end
   resources :profiles, only: :show
 end
