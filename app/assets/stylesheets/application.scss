@@ -10,7 +10,12 @@ li{
 .address{
   float: right;
 }
-
+.top-bar{
+  height: 100px;
+  border-bottom: solid;
+  border-width: thin;
+  border-bottom-color: #a8a8a8;
+}
 .new_bar{
   padding-left: 20px;
   margin-right: 400px;
@@ -25,13 +30,63 @@ li{
 
 #sign_out{
   margin-left: 27px;
+
 }
 
-h1{
+.listTitle{
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   text-align: center;
 }
 
 .profile_name{
   text-align: left;
   margin-left: 20px;
+
+}
+
+.top_nav{
+  text-align: right;
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
+  font-size: 110%;
+
+}
+
+.search_bar{
+  float: right;
+}
+
+#q{
+  padding: 0;
+}
+
+
+#q.search1{
+  height: 25px;
+}
+.section.top_nav{
+  right: 10px;
+}
+
+.raisetitle{
+  float: left;
+  font-size: 300%;
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
+}
+.submitbutton{
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
+  margin-left: 10px;
+
+}
+
+.add_bar_center{
+  text-align: center;
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
+  font-size: 120%;
+
+}
+
+.add_link{
+  text-align: center;
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
+  font-size: 145%;
 }
