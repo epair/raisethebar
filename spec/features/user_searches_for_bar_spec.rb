@@ -8,23 +8,11 @@ require 'rails_helper'
 # [] user is signed in
 # [] results appear on a new page
 feature 'user signs in and user searches for bar' do
-  let!(:bar) do
-    Bar.create(
-      name: 'Punters',
-      address: '40 Huntington Ave',
-      city: 'Boston',
-      state: 'MA',
-      zip: '02120',
-      description: 'An awful college dive bar.',
-    )
-  end
+  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id, name: "Punters")}
+  let!(:user){ FactoryGirl.create(:user)}
 
   before do
-    user = FactoryGirl.create(:user)
-    visit new_user_session_path
-    fill_in 'Username', with: user.username
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
+    login_user(user)
   end
 
   scenario 'user fills out search creation form successfully' do
