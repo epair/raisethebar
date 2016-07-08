@@ -1,21 +1,8 @@
 require 'rails_helper'
 
 feature 'user edits bar' do
-  let!(:user) do
-    FactoryGirl.create(:user)
-  end
-
-  let!(:bar) do
-    Bar.create(
-      name: 'Punters',
-      address: '40 Huntington Ave',
-      city: 'Boston',
-      state: 'MA',
-      zip: '02120',
-      description: 'An awful college dive bar.',
-      user_id: user.id
-    )
-  end
+  let!(:user){ FactoryGirl.create(:user) }
+  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user visits detail page and edits bar info successfully' do
     visit new_user_session_path

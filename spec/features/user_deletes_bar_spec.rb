@@ -5,20 +5,8 @@ require 'rails_helper'
 # So that no one can review it
 
 feature 'user deletes bar' do
-  let!(:user) do
-    FactoryGirl.create(:user)
-  end
-  let!(:bar) do
-    Bar.create(
-      name: 'Punters',
-      address: '40 Huntington Ave',
-      city: 'Boston',
-      state: 'MA',
-      zip: '02120',
-      description: 'An awful college dive bar.',
-      user_id: user.id
-    )
-  end
+  let!(:user){ FactoryGirl.create(:user) }
+  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user visits bar show page and deletes bar' do
     visit new_user_session_path
@@ -26,7 +14,7 @@ feature 'user deletes bar' do
     fill_in 'Password', with: user.password
     click_button 'Log in'
 
-    click_link 'Punters'
+    click_link bar.name
     click_link 'Delete'
 
     expect(Bar.all).to eq([])
