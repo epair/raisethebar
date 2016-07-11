@@ -5,8 +5,8 @@ require 'rails_helper'
 # So that no one can review it
 
 feature 'user deletes bar' do
-  let!(:user){ FactoryGirl.create(:user) }
-  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bar) { FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user visits bar show page and deletes bar' do
     login_user(user)

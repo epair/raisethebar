@@ -1,0 +1,10 @@
+
+<% if @results.present? %>
+  <% @results.each do |bar| %>
+    <%= link_to bar.name, bar_path(bar) %>
+  <% end %>
+<% elsif %>
+<% params[:q].blank? %>
+<% else %>
+  <p> There were no Bars found with the following criteria: <%= params[:q] %>.<p>
+<% end %>
