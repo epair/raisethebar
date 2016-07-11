@@ -8,8 +8,8 @@ require 'rails_helper'
 # [] user is signed in
 # [] results appear on a new page
 feature 'user signs in and user searches for bar' do
-  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id, name: "Punters")}
-  let!(:user){ FactoryGirl.create(:user)}
+  let!(:bar) { FactoryGirl.create(:bar, user_id: user.id, name: "Punters") }
+  let!(:user) { FactoryGirl.create(:user) }
 
   before do
     login_user(user)
@@ -27,7 +27,7 @@ feature 'user signs in and user searches for bar' do
     click_button 'Search'
 
     expect(page).to have_content('There were no Bars found with the following criteria: salami.')
-end
+  end
 
   scenario 'user clicks search with an empty field' do
     click_button 'Search'
