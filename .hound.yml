@@ -1,6 +1,8 @@
 AllCops:
   Exclude:
     - db/schema.rb
+    - db/migrate/*.rb
+    - db/migreate/*
 
 AccessorMethodName:
   Enabled: false
@@ -118,7 +120,7 @@ LineEndConcatenation:
   Enabled: false
 
 LineLength:
-  Max: 80
+  Max: 180
 
 MethodLength:
   Enabled: false
