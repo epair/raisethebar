@@ -20,7 +20,7 @@
       <%= review.rating %>
       <%= review.price %>
       <%= link_to "Edit", [:edit, review.bar, review]  %>
-      <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Delete', [review.bar, review], method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
     <% end %>
   </div>
