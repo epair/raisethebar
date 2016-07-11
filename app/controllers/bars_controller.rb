@@ -20,8 +20,8 @@ class BarsController < ApplicationController
       flash[:error] = "Search Criteria Cannot Be Blank"
       redirect_to bars_path
     else
-    @results = Bar.where("name ILIKE ?", "%#{params[:q]}%")
-    render :search
+      @results = Bar.where("name ILIKE ?", "%#{params[:q]}%")
+      render :search
     end
   end
 

@@ -1,91 +1,86 @@
 // @import "*";
-.body{
+.body {
   padding-left: 20px;
 }
 
-li{
+li {
   list-style: none;
 }
 
-.address{
+.address {
   float: right;
 }
-.top-bar{
+
+.top-bar {
   height: 100px;
   border-bottom: solid;
   border-width: thin;
   border-bottom-color: #a8a8a8;
 }
-.new_bar{
+
+.new_bar {
   padding-left: 20px;
   margin-right: 400px;
 }
 
-.nav_element{
+.nav_element {
   display: inline-block;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 20px;
 }
 
-#sign_out{
+#sign_out {
   margin-left: 27px;
-
 }
 
-.listTitle{
+.listTitle {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   text-align: center;
 }
 
-.profile_name{
+.profile_name {
   text-align: left;
   margin-left: 20px;
-
 }
 
-.top_nav{
-  text-align: right;
+.top_nav {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   font-size: 110%;
-
+  text-align: right;
 }
 
-.search_bar{
+.search_bar {
   float: right;
 }
 
-#q{
+#q {
   padding: 0;
-}
-
-
-#q.search1{
   height: 25px;
 }
-.section.top_nav{
+
+.section.top_nav {
   right: 10px;
 }
 
-.raisetitle{
+.raisetitle {
   float: left;
-  font-size: 300%;
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
+  font-size: 300%;
 }
-.submitbutton{
+
+.submitbutton {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   margin-left: 10px;
-
 }
 
-.add_bar_center{
+.add_bar_center {
   text-align: center;
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   font-size: 120%;
-
 }
 
-.add_link{
+.add_link {
   text-align: center;
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   font-size: 145%;
