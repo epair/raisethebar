@@ -42,6 +42,8 @@ class BarsController < ApplicationController
 
   def show
     @bar = Bar.find(params[:id])
+    @reviews = @bar.reviews
+    @review = Review.new
   end
 
   def edit
