@@ -6,7 +6,7 @@ class CreateReviews < ActiveRecord::Migration
       t.string :price
       t.integer :user_id, null: false
       t.integer :bar_id, null: false
-      t.timestamps  
+      t.timestamps
     end
   end
 end
