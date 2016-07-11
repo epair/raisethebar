@@ -8,7 +8,7 @@ require 'rails_helper'
 # [] Name is unique
 # [] user is signed in
 feature 'user signs in and user creates bar', :devise do
-  let!(:user){ FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'user fills out bar creation form successfully' do
     login_user(user)
