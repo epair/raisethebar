@@ -32,6 +32,12 @@ class ReviewsController < ApplicationController
     @bar = @review.bar
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to profile_path
+  end
+
   private
   def review_params
     params.require(:review).permit(:body, :rating, :price, :title)

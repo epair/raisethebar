@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :bars do
     resources :reviews
   end
+  resources :reviews, only: [:show, :destroy]
   resources :profiles, only: :show
 end

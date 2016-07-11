@@ -10,7 +10,7 @@ feature "user edits review" do
     click_link "Profile"
 
     expect(page).to have_content(review1.body)
-    click_link "Edit Review"
+    click_link "Edit"
     fill_in "Title", with: "The Mission"
     fill_in "Review Body", with: "Bum bah bah bah"
     fill_in "Rating", with: "2"
@@ -29,7 +29,7 @@ feature "user edits review" do
     click_link "Profile"
 
     expect(page).to have_content(review1.body)
-    click_link "Edit Review"
+    click_link "Edit"
     fill_in "Review Body", with: ""
     fill_in "Title", with: ""
     fill_in "Rating", with: "askjdhfksjh"
