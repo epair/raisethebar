@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'foundation-rails'
 gem 'devise'
 gem 'carrierwave'
+gem 'file_validators'
 
 group :development, :test do
   gem 'capybara'
