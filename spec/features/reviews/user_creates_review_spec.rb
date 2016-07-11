@@ -10,14 +10,14 @@ feature "user creates review" do
 
     fill_in "Review Body", with: "place sucked!"
     fill_in "Title", with: "Title"
-    fill_in "Rating", with: "2"
-    fill_in "Price", with: "4"
+    choose 'review_rating_1'
+    choose 'review_price_3'
 
     click_button "Create Review"
 
     expect(page).to have_content("place sucked!")
     expect(page).to have_content("2")
-    expect(page).to have_content("4")
+    expect(page).to have_content("3")
   end
 
   scenario "user fills out review creation form unsuccessfully" do
@@ -25,11 +25,11 @@ feature "user creates review" do
     click_link bar.name
 
     fill_in "Review Body", with: ""
-    fill_in "Rating", with: ""
-    fill_in "Price", with: ""
-
+    fill_in "Title", with: ""
+    choose 'review_rating_1'
+    choose 'review_price_3'
     click_button "Create Review"
 
-    expect(page).to have_content("Body can't be blank, Rating can't be blank, Rating is not a number, Rating is the wrong length (should be 1 character), Price can't be blank, Price is not a number, Price is the wrong length (should be 1 character), Title can't be blank")
+    expect(page).to have_content("Body can't be blank, Title can't be blank")
   end
 end

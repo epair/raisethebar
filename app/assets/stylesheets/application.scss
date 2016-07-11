@@ -88,3 +88,35 @@ li {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   font-size: 145%;
 }
+
+.rating {
+  float:left;
+  width:300px;
+  span { float:right; position:relative; }
+  span input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+  }
+  span label {
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    color:#FFF;
+    background:#ccc;
+    font-size:30px;
+    margin-right:2px;
+    line-height:30px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+  }
+  span:hover ~ span label,
+  span:hover label,
+  span.checked label,
+  span.checked ~ span label {
+      background:#F90;
+      color:#FFF;
+  }
+}

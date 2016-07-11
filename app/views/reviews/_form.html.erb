@@ -5,11 +5,59 @@
   <%= f.label :body, "Review Body" %>
   <%= f.text_field :body %>
 
-  <%= f.label :rating %>
-  <%= f.text_field :rating %>
+  <div class="rating rate">
+    <span >
+      <%= f.radio_button(:rating, "5") %>
+      <%= f.label(:rating_5, "5") %>
+    </span>
 
-  <%= f.label :price %>
-  <%= f.text_field :price %>
+    <span>
+      <%= f.radio_button(:rating, "4") %>
+      <%= f.label(:rating_4, "4") %>
+    </span>
+
+    <span>
+      <%= f.radio_button(:rating, "3") %>
+      <%= f.label(:rating_3, "3") %>
+    </span>
+
+    <span>
+      <%= f.radio_button(:rating, "2") %>
+      <%= f.label(:rating_2, "2") %>
+    </span>
+
+    <span>
+      <%= f.radio_button(:rating, "1") %>
+      <%= f.label(:rating_1, "1") %>
+    </span>
+  </div>
+
+  <div class="rating price">
+    <span>
+      <%= f.radio_button(:price, "5") %>
+      <%= f.label(:price_5, "5") %>
+    </span>
+
+    <span>
+      <%= f.radio_button(:price, "4") %>
+      <%= f.label(:price_4, "4") %>
+    </span>
+
+    <span>
+      <%= f.radio_button(:price, "3") %>
+      <%= f.label(:price_3, "3") %>
+    </span>
+
+    <span>
+      <%= f.radio_button(:price, "2") %>
+      <%= f.label(:price_2, "2") %>
+    </span>
+
+    <span>
+      <%= f.radio_button(:price, "1") %>
+      <%= f.label(:price_1, "1") %>
+    </span>
+  </div>
 
   <%= f.submit %>
 <% end %>

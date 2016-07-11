@@ -13,8 +13,8 @@ feature "user edits review" do
     click_link "Edit"
     fill_in "Title", with: "The Mission"
     fill_in "Review Body", with: "Bum bah bah bah"
-    fill_in "Rating", with: "2"
-    fill_in "Price", with: "3"
+    choose 'review_rating_2'
+    choose 'review_price_3'
     click_button "Update Review"
 
     expect(page).to have_content("Review successfully updated!")
@@ -32,10 +32,10 @@ feature "user edits review" do
     click_link "Edit"
     fill_in "Review Body", with: ""
     fill_in "Title", with: ""
-    fill_in "Rating", with: "askjdhfksjh"
-    fill_in "Price", with: ""
+    choose 'review_rating_2'
+    choose 'review_price_3'
     click_button "Update Review"
 
-    expect(page).to have_content("Body can't be blank, Rating is not a number, Rating is the wrong length (should be 1 character), Price can't be blank, Price is not a number, Price is the wrong length (should be 1 character), Title can't be blank")
+    expect(page).to have_content("Body can't be blank, Title can't be blank")
   end
 end
