@@ -1,5 +1,5 @@
 class AddTitleToReviews < ActiveRecord::Migration
   def change
-    add_column(:reviews, :title, :string, {null: false})
+    add_column(:reviews, :title, :string, null: false)
   end
 end
