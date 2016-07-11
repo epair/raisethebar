@@ -1,4 +1,7 @@
 <%= form_for([@bar, @review]) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
   <%= f.label :body, "Review Body" %>
   <%= f.text_field :body %>
 
@@ -7,9 +10,6 @@
 
   <%= f.label :price %>
   <%= f.text_field :price %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
 
   <%= f.submit %>
 <% end %>
