@@ -2,6 +2,7 @@
   <%= link_to 'Edit Account Info', edit_user_registration_path %>
 
   <h1 class="profile_name"><%= @users_name %></h1>
+  <%= image_tag @users_photo %>
 
   <div>
     <% @users_bar.each do |bar|%>
