@@ -12,4 +12,17 @@
     <% end %>
   </div>
 
+  <div>
+    <% @users_review.each do |review|%>
+    <div>
+      <%= review.title %>
+      <%= review.body %>
+      <%= review.rating %>
+      <%= review.price %>
+      <%= link_to "Edit", [:edit, review.bar, review]  %>
+      <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <% end %>
+  </div>
+
 </div>
