@@ -15,6 +15,16 @@ class BarsController < ApplicationController
     end
   end
 
+  def search
+    if params[:q].blank?
+      flash[:error] = "Search Criteria Cannot Be Blank"
+      redirect_to bars_path
+    else
+      @results = Bar.where("name ILIKE ?", "%#{params[:q]}%")
+      render :search
+    end
+  end
+
   def update
     @bar = Bar.find(params[:id])
     if @bar.update(params_bar)
