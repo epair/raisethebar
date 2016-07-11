@@ -5,9 +5,9 @@ require 'rails_helper'
 # So that I can pick bars to review
 
 feature 'user views list of bars' do
-  let!(:user){ FactoryGirl.create(:user) }
-  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
-  let!(:bartwo){ FactoryGirl.create(:bar, user_id: user.id) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bar) { FactoryGirl.create(:bar, user_id: user.id) }
+  let!(:bartwo) { FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user sees list of bars' do
     login_user(user)

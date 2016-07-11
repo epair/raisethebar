@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 feature 'user edits bar' do
-  let!(:user){ FactoryGirl.create(:user) }
-  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bar) { FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user visits detail page and edits bar info successfully' do
     login_user(user)
