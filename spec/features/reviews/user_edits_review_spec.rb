@@ -1,9 +1,9 @@
 require "rails_helper"
 
 feature "user edits review" do
-  let!(:user){ FactoryGirl.create(:user) }
-  let!(:bar){ FactoryGirl.create(:bar, user_id: user.id) }
-  let!(:review1){ FactoryGirl.create(:review, bar_id: bar.id, user_id: user.id)}
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bar) { FactoryGirl.create(:bar, user_id: user.id) }
+  let!(:review1) { FactoryGirl.create(:review, bar_id: bar.id, user_id: user.id) }
 
   scenario "review creator edits review successfully" do
     login_user(user)

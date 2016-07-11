@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'add profile photo' do
-  let!(:user){ FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'user uploads failing filetype' do
     visit '/'
