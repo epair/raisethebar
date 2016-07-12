@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resources :votes, only: [:create, :destroy]
   end
 
   resources :profiles, only: :show
