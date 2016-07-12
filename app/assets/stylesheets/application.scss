@@ -101,23 +101,23 @@ li {
 }
 
 span input {
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  left: 0;
   opacity: 0;
+  position: absolute;
+  top: 0;
 }
 
 span label {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  color: $span-color;
   background: $span-background;
-  font-size: 30px;
-  margin-right: 2px;
-  line-height: 30px;
   border-radius: 50%;
+  color: $span-color;
+  display: inline-block;
+  font-size: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 2px;
+  text-align: center;
+  width: 30px;
 }
 
 span:hover ~ span label,
