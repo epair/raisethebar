@@ -1,0 +1,5 @@
+/db/schema.rb
+/config/initializers/devise.rb
+/db/migrate/*.rb
+db/migrate/*.rb
+db/migrate/*

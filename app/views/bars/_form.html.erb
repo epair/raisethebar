@@ -1,3 +1,4 @@
+<div class="new_bar">
 <%= form_for(@bar) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -14,5 +15,12 @@
   <%= f.label :zip %>
   <%= f.text_field :zip %>
 
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :photo_url, "Bar Image" %>
+  <%= f.text_field :photo_url %>
+
   <%= f.submit %>
 <% end %>
+</div>

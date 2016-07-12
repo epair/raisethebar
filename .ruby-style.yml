@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - "vendor/**/*"
     - "db/schema.rb"
+    - "db/migrate"
   UseCache: false
 Documentation:
   Enabled: false
