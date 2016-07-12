@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
     @review.bar = @bar
     @review.user = current_user
     if @review.save
+      ReviewMailer.new_review(@review).deliver_later
       flash[:notice] = "Review added successfully"
       redirect_to bar_path(@bar)
     else
@@ -39,6 +40,7 @@ class ReviewsController < ApplicationController
   end
 
   private
+  
   def review_params
     params.require(:review).permit(:body, :rating, :price, :title)
   end
