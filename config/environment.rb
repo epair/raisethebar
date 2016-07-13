@@ -10,6 +10,6 @@ ActionMailer::Base.smtp_settings = {
  :authentication => :plain,
  :user_name => ENV['app53572504@heroku.com'],
  :password => ENV['SendGridCreds12345'],
- :domain => 'https://intense-eyrie-92860.herokuapp.com',
+ :domain => 'heroku.com',
  :enable_starttls_auto => true
 }
