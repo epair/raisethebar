@@ -11,6 +11,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'file_validators'
 gem 'fog'
+gem 'puma'
 
 group :development, :test do
   gem 'capybara'
