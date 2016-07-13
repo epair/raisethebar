@@ -1,17 +1,27 @@
 class VotesController < ApplicationController
+
   def create
-      @upvote = Upvote.new(secure_params)
-      @upvote.review = Review.find(params[:review_id])
-      if @upvote.save
-        respond_to do |format|
-          format.html { redirect_to @upvote.post }
-          format.js # we'll use this later for AJAX!
-        end
-      end
+    @review = Review.find(params[:review_id])
+    @bar = @review.bar
+    @vote = Vote.new(vote_params)
+    @vote.review = @review
+    @vote.user = current_user
+
+     if @vote.save
+      if @vote.upvote == true
+         @review.vote_count += 1
+      elsif @vote.upvote == false
+        @review.vote_count -= 1
+     end
+     @review.save
+     flash[:notice] = "Voted"
+     redirect_to bar_path(@bar)
     end
 
-    private
-      def secure_params
-        params.require(:upvote).permit(:user)
-      end
   end
+
+  private
+    def vote_params
+      params.require(:vote).permit(:upvote)
+    end
+end

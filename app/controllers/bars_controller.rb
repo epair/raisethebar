@@ -1,5 +1,6 @@
 class BarsController < ApplicationController
   def index
+    binding.pry
     @bars = Bar.all
   end
 
@@ -44,6 +45,7 @@ class BarsController < ApplicationController
     @bar = Bar.find(params[:id])
     @reviews = @bar.reviews
     @review = Review.new
+    @vote = Vote.new
   end
 
   def edit
@@ -60,4 +62,5 @@ class BarsController < ApplicationController
   def params_bar
     params.require(:bar).permit(:name, :address, :city, :state, :zip, :description, :photo_url)
   end
+
 end

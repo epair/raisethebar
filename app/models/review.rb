@@ -2,8 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :bar
   belongs_to :user
   has_many :votes
-  has_many :upvotes, through: :votes
-  has_many :downvotes, through: :votes
+
 
 
   validates :body, presence: true
@@ -12,4 +11,8 @@ class Review < ActiveRecord::Base
   validates :title, presence: true
   validates :user_id, presence: true
   validates :bar_id, presence: true
+  validates :vote_count, presence: true
+
+
+
 end
