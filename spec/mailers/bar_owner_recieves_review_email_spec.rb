@@ -20,8 +20,8 @@ feature "Bar owner receives email when new review is posted" do
 
     email = ActionMailer::Base.deliveries.last
 
-    expect(email.to.first).to eq("#{bar.user.email}")
-    expect(email.subject).to eq("New Review for #{Review.last.bar.name}")
+    expect(email.to.first).to eq(bar.user.email.to_s)
+    expect(email.subject).to eq("New Review for" + Review.last.bar.name.to_s)
     expect(email.body.to_s).to include("Stay Thirsty!")
   end
 end
