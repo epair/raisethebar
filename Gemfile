@@ -11,11 +11,8 @@ gem 'devise'
 gem 'carrierwave'
 gem 'file_validators'
 gem 'fog'
-<<<<<<< HEAD
 gem 'mailcatcher'
-=======
 gem 'puma'
->>>>>>> master
 
 group :development, :test do
   gem 'capybara'
