@@ -13,6 +13,16 @@ class Review < ActiveRecord::Base
   validates :bar_id, presence: true
   validates :vote_count, presence: true
 
-
-
+  def vote_counter(votes)
+    upvotes = []
+    downvotes = []
+    votes.each do |vote|
+      if vote.upvote
+        upvotes << vote
+      else
+        downvotes << vote
+      end
+    end
+    vote_counter = upvotes.length - downvotes.length
+  end
 end

@@ -4,5 +4,4 @@ class Vote < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :review_id, presence: true
-  validates :upvote, :inclusion => {:in => [true, false]}
 end

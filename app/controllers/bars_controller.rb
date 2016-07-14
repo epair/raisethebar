@@ -1,6 +1,5 @@
 class BarsController < ApplicationController
   def index
-    binding.pry
     @bars = Bar.all
   end
 
