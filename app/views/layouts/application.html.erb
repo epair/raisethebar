@@ -11,14 +11,19 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 </head>
 <body>
-  <% if user_signed_in? %>
-  <nav class="top-bar" data-topbar role='navigation'>
+  <div class="top-bar" data-topbar role='navigation'>
+
     <section class="raisetitle">
       <%= link_to "RaiseTheBar", bars_path %>
     </section>
+
     <section class="top_nav">
-      <div id="sign_out" class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
-      <div class="nav_element"><%= link_to 'Profile', profile_path(current_user) %></div>
+      <% if user_signed_in? %>
+        <div id="sign_out" class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
+        <div class="nav_element"><%= link_to 'Profile', profile_path(current_user) %></div>
+      <% else %>
+        <div id="sign_in" class="nav_element"><%= link_to 'Sign In', new_user_session_path %></div>
+      <% end %>
       <div class="nav_element"><%= link_to 'Home', bars_path %>
       </section>
       <section class="search_bar" >
@@ -31,17 +36,21 @@
             <input class="submitbutton" type="submit" name="commit" value="Search">
           </li>
         </ul>
-        <% end %>
       </section>
     </div>
-  </nav>
+  </div>
 
   <% end %>
   <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: "alert alert-info" %>
+    <% if name == "success" || name == "notice" %>
+      <%= content_tag :div, msg, class: "callout success" %>
+    <% else %>
+      <%= content_tag :div, msg, class: "callout alert" %>
+    <% end %>
   <% end %>
 
-<%= yield %>
-
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>

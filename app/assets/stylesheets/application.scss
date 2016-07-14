@@ -1,15 +1,14 @@
 @import "colors";
 
-.body {
-  padding-left: 20px;
-}
-
-li {
-  list-style: none;
+.container {
+  margin: 0 auto;
+  width: 800px;
+  padding-top: 15px;
 }
 
 .address {
-  float: right;
+  padding-top: 20px;
+  float: left;
 }
 
 .top-bar {
@@ -17,11 +16,6 @@ li {
   border-bottom: solid;
   border-width: thin;
   border-bottom-color: $top-bar;
-}
-
-.new_bar {
-  padding-left: 20px;
-  margin-right: 400px;
 }
 
 .nav_element {
@@ -38,11 +32,6 @@ li {
 .listTitle {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   text-align: center;
-}
-
-.profile_name {
-  text-align: left;
-  margin-left: 20px;
 }
 
 .top_nav {
@@ -92,19 +81,24 @@ li {
   width: 300px;
 }
 
+.pricing {
+  float: left;
+  width: 300px;
+}
+
 .form_container {
   float: right;
   position: relative;
 }
 
-span input {
+.rate input {
   left: 0;
   opacity: 0;
   position: absolute;
   top: 0;
 }
 
-span label {
+.rate label {
   background: $span-background;
   border-radius: 50%;
   color: $span-color;
@@ -117,10 +111,80 @@ span label {
   width: 30px;
 }
 
-span:hover ~ span label,
-span:hover label,
-span.checked label,
-span.checked ~ span label {
+.rate:hover ~ .rate label,
+.rate:hover label,
+.rate.checked label,
+.rate.checked ~ .rate label {
   background: $checked-background;
   color: $checked-color;
+}
+
+.price input {
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+.price label {
+  background: $span-background;
+  border-radius: 50%;
+  color: $span-color;
+  display: inline-block;
+  font-size: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 2px;
+  text-align: center;
+  width: 30px;
+}
+
+.price:hover ~ .price label,
+.price:hover label,
+.price.checked label,
+.price.checked ~ .price label {
+  background: $checked-background;
+  color: $checked-color;
+}
+
+.bar_title {
+  width: 600px;
+  margin: 0;
+}
+
+.header {
+  padding-bottom: 10px;
+}
+
+.header-buttons {
+  padding-top: 10px;
+  float: right;
+}
+
+.block {
+  width: 50%;
+  float: left;
+}
+.reviews {
+  padding-left: 10px;
+  width: 50%;
+  float: left;
+}
+
+.profile_photo {
+  width: 100px;
+  border-radius: 15px;
+  float: left;
+}
+
+.profile_name {
+  float: left;
+  padding-left: 10px;
+}
+
+.edit {
+  float: right;
+}
+
+.bars {
 }

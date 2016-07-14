@@ -1,19 +1,28 @@
-<div class="body">
-  <h1><%= @bar.name %></h1>
-    <div class="callout secondary">
-      <%= @bar.description %>
-    </div>
-
-    <div class="callout">
-      <%= @bar.address %>
-      <%= @bar.city %>
-      <%= @bar.state %>
-      <%= @bar.zip %>
-    </div>
+<div class="header">
+  <div class="header-buttons">
     <% if current_user.id == @bar.user_id %>
-      <%= link_to 'Edit', edit_bar_path(@bar) %>
-      <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit', edit_bar_path(@bar), class: "button" %>
+    <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
     <% end %>
-    <%= render 'reviews/form' %>
-    <%= render @reviews %>
+  </div>
+  <h1 class="bar_title"><%= @bar.name %></h1>
+</div>
+
+<div class="callout secondary block">
+  <%= @bar.description %>
+  <div class="address">
+    <%= @bar.address %>
+    <%= @bar.city %>
+    <%= @bar.state %>
+    <%= @bar.zip %>
+  </div>
+</div>
+
+<div class="reviews">
+  <% if current_user.nil? %>
+  <div class="callout">Please log in to write a review.</div>
+  <% else %>
+  <%= render 'reviews/form' %>
+  <% end %>
+  <%= render @reviews %>
 </div>

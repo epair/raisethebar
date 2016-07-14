@@ -1,26 +1,18 @@
-<div class="new_bar">
 <%= form_for(@bar) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: "Name" %>
 
-  <%= f.label :address %>
-  <%= f.text_field :address %>
+  <%= f.text_field :address, placeholder: "Address" %>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+  <%= f.text_field :city, placeholder: "City"%>
 
-  <%= f.label :state %>
-  <%= f.text_field :state %>
+  <%= f.text_field :state, placeholder: "State" %>
 
-  <%= f.label :zip %>
-  <%= f.text_field :zip %>
+  <%= f.text_field :zip, placeholder: "Zip" %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <%= f.text_field :description, placeholder: "Description" %>
 
   <%= f.label :photo_url, "Bar Image" %>
-  <%= f.text_field :photo_url %>
+  <%= f.file_field :photo_url %>
 
-  <%= f.submit %>
+  <%= f.submit%>
 <% end %>
-</div>
