@@ -38,6 +38,8 @@
         <% end %>
         <% if review.votes.entries.length > 0 %>
           <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
+        <% else %>
+          <div id="review-sum-<%=review.id%>">0</div>
         <% end %>
       <% end %>
     </div>
