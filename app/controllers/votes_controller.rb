@@ -7,6 +7,7 @@ class VotesController < ApplicationController
     @vote.review = @review
     @vote.user = current_user
 
+
      if @vote.save
       if @vote.upvote == true
          @review.vote_count += 1
