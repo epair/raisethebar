@@ -1,4 +1,5 @@
 <div class="body">
+  <% if !user_signed_in? || user_signed_in? %>
   <h1><%= @bar.name %></h1>
     <div class="callout secondary">
       <%= @bar.description %>
@@ -10,9 +11,9 @@
       <%= @bar.state %>
       <%= @bar.zip %>
     </div>
-    <% if current_user.id == @bar.user_id %>
-      <%= link_to 'Edit', edit_bar_path(@bar) %>
-      <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% elsif current_user.id == @bar.user_id %>
+    <%= link_to 'Edit', edit_bar_path(@bar) %>
+    <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <%= render 'reviews/form' %>
     <%= render @reviews %>

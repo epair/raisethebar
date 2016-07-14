@@ -6,6 +6,8 @@
     <%= link_to bar.name, bar_path(bar)  %>
   </div>
   <% end %>
+  <% if current_user %>
 <div class="add_bar_center">
    <%= link_to '- Add Bar -', new_bar_path %>
+   <% end %>
 </div>

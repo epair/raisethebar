@@ -11,14 +11,20 @@
   <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
 </head>
 <body>
-  <% if user_signed_in? %>
   <nav class="top-bar" data-topbar role='navigation'>
     <section class="raisetitle">
       <%= link_to "RaiseTheBar", bars_path %>
     </section>
     <section class="top_nav">
+      <% if current_user.admin? %>
+      <div class="nav_element" id="admin_info"><%= link_to 'Admin Power', admins_path%></div>
+      <% end %>
+      <% if user_signed_in? %>
       <div id="sign_out" class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
       <div class="nav_element"><%= link_to 'Profile', profile_path(current_user) %></div>
+      <% else %>
+      <div class="nav_element" id="sign_in"><%= link_to 'Sign In', user_session_path%></div>
+      <% end %>
       <div class="nav_element"><%= link_to 'Home', bars_path %>
       </section>
       <section class="search_bar" >
@@ -36,7 +42,6 @@
     </div>
   </nav>
 
-  <% end %>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
