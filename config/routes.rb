@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
   resources :reviews, only: [:show] do
     resources :votes, only: [:create]
   end
