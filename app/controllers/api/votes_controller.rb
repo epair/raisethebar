@@ -10,20 +10,16 @@ class Api::VotesController < ApplicationController
     if !@previous_vote.nil?
       if @previous_vote.upvote == @vote.upvote
         Vote.destroy(@previous_vote.id)
-        current_count = { data: @review.vote_counter(@review.votes) }
-        render json: current_count
       else
         Vote.destroy(@previous_vote.id)
         @vote.save
         @review.save
-        current_count = { data: @review.vote_counter(@review.votes) }
-        render json: current_count
       end
     else @vote.save
       @review.save
-      current_count = { data: @review.vote_counter(@review.votes) }
-      render json: current_count
     end
+    current_count = { data: @review.vote_counter(@review.votes) }
+    render json: current_count
   end
 
   private
