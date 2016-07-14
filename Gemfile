@@ -11,6 +11,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'file_validators'
 gem 'fog'
+gem 'puma'
 
 group :development, :test do
   gem 'capybara'
@@ -20,6 +21,10 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'valid_attribute'
   gem 'dotenv-rails'
+end
+
+group :development do
+  gem 'mailcatcher'
 end
 
 group :test do
