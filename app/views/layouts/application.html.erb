@@ -17,7 +17,7 @@
     </section>
     <section class="top_nav">
       <% if current_user.admin? %>
-      <div class="nav_element" id="admin_info"><%= link_to 'Admin Power', admins_path%></div>
+      <div class="nav_element" id="admin_info"><%= link_to 'Admin Power', users_path%></div>
       <% end %>
       <% if user_signed_in? %>
       <div id="sign_out" class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
