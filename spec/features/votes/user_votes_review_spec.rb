@@ -2,8 +2,8 @@ require "rails_helper"
 
 feature "user votes on a review" do
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:bar) {FactoryGirl.create(:bar, user: user) }
-  let!(:review) {FactoryGirl.create(:review, bar: bar, user: user) }
+  let!(:bar) { FactoryGirl.create(:bar, user: user) }
+  let!(:review) { FactoryGirl.create(:review, bar: bar, user: user) }
 
   before do
     login_user(user)

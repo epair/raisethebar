@@ -3,8 +3,6 @@ class Review < ActiveRecord::Base
   belongs_to :user
   has_many :votes
 
-
-
   validates :body, presence: true
   validates :rating, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 5 }, length: { is: 1 }
   validates :price, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 5 }, length: { is: 1 }
@@ -23,6 +21,6 @@ class Review < ActiveRecord::Base
         downvotes << vote
       end
     end
-    vote_counter = upvotes.length - downvotes.length
+    upvotes.length - downvotes.length
   end
 end
