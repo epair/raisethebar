@@ -52,6 +52,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.11.1)
+      capybara (>= 2.3.0, < 2.8.0)
+      json
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -67,6 +70,7 @@ GEM
       thor (~> 0.19.1)
       tins (~> 1.6.0)
     daemons (1.2.3)
+    database_cleaner (1.5.3)
     devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -389,8 +393,10 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  capybara-webkit
   carrierwave
   coveralls
+  database_cleaner
   devise
   dotenv-rails
   factory_girl_rails
@@ -415,4 +421,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.12.3
+   1.12.5
