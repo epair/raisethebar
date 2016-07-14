@@ -9,8 +9,14 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :reviews do
-    resources :votes, only: [:create, :destroy]
+  resources :reviews, only: [:show] do
+    resources :votes, only: [:create]
+  end
+
+  namespace :api do
+    resources :reviews do
+      resources :votes, only: [:create]
+    end
   end
   resources :profiles, only: :show
 end

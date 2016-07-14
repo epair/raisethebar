@@ -29,15 +29,15 @@
           Price:<%= review.price %>
         </p>
         <%= form_for ([review, @vote]) do |f| %>
-          <%= f.submit 'Upvote', class: 'upvote-submit' %>
+          <%= f.submit 'Upvote', class: 'upvote-submit', id: "upvote-submit-#{review.id}" %>
           <%= f.hidden_field :upvote, value: true %>
         <% end %>
         <%= form_for ([review, @vote]) do |f| %>
-          <%= f.submit 'Downvote', class: 'downvote-submit' %>
+          <%= f.submit 'Downvote', class: 'downvote-submit', id: "downvote-submit-#{review.id}" %>
           <%= f.hidden_field :upvote, value: false %>
         <% end %>
         <% if review.votes.entries.length > 0 %>
-          <%= review.vote_counter(review.votes) %>
+          <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
         <% end %>
       <% end %>
     </div>
