@@ -36,19 +36,30 @@
       <%= review.body %>
       <br>
       Rating:
-      <% review.rating.times do %>
+      <% review.rating.to_i.times do %>
+        <i class="fa fa-star"></i>
       <% end %>
       <br>
-      Price:<%= review.price %>
+      Price:
+      <% review.price.to_i.times do %>
+        <i class="fa fa-usd"></i>
+      <% end %>
     </p>
+
     <%= form_for ([review, @vote]) do |f| %>
-      <%= f.submit 'Upvote', class: 'upvote-submit', id: "upvote-submit-#{review.id}" %>
+      <%= button_tag class: 'upvote-submit', id: "upvote-submit-#{review.id}" do %>
+        <i class="fa fa-thumbs-up"></i>
+      <% end %>
       <%= f.hidden_field :upvote, value: true %>
     <% end %>
+
     <%= form_for ([review, @vote]) do |f| %>
-      <%= f.submit 'Downvote', class: 'downvote-submit', id: "downvote-submit-#{review.id}" %>
+      <%= button_tag class: 'downvote-submit', id: "downvote-submit-#{review.id}" do %>
+        <i class="fa fa-thumbs-down"></i>
+      <% end %>
       <%= f.hidden_field :upvote, value: false %>
     <% end %>
+
     <% if review.votes.entries.length > 0 %>
       <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
     <% else %>
