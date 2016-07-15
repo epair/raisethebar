@@ -40,14 +40,15 @@
   </div>
 
   <% end %>
-  <% flash.each do |name, msg| %>
-    <% if name == "success" || name == "notice" %>
-      <%= content_tag :div, msg, class: "callout success" %>
-    <% else %>
-      <%= content_tag :div, msg, class: "callout alert" %>
-    <% end %>
-  <% end %>
   <div class="background">
+    <% flash.each do |name, msg| %>
+      <% if name == "success" || name == "notice" %>
+        <%= content_tag :div, msg, class: "callout success" %>
+      <% else %>
+        <%= content_tag :div, msg, class: "callout alert" %>
+      <% end %>
+    <% end %>
+
     <div class="container">
       <%= yield %>
     </div>

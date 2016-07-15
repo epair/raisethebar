@@ -1,6 +1,6 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<h2 class="header">Log in</h2>
+<div class="body-container">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.text_field :username, autofocus: true, placeholder: "Username" %>
   </div>
@@ -10,14 +10,15 @@
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
+  <div class="field">
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %>
+  </div>
   <% end -%>
 
   <div class="actions">
     <%= f.submit "Log in", class: "button" %>
     <%= render "devise/shared/links" %>
   </div>
-<% end %>
+  <% end %>
+</div>

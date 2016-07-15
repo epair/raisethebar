@@ -1,4 +1,5 @@
-<%= form_for(@bar) do |f| %>
+<div class="body-container">
+  <%= form_for(@bar) do |f| %>
   <%= f.text_field :name, placeholder: "Name" %>
 
   <%= f.text_field :address, placeholder: "Address" %>
@@ -15,4 +16,5 @@
   <%= f.file_field :photo_url %>
 
   <%= f.submit%>
-<% end %>
+  <% end %>
+</div>
