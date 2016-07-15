@@ -20,4 +20,10 @@ $(document).ready(function(){
         $(".rating span").removeClass('checked');
         $(this).parent().addClass('checked');
     });
+
+    $(".pricing input:radio").attr("checked", false);
+    $('.pricing input').click(function () {
+        $(".pricing span").removeClass('checked');
+        $(this).parent().addClass('checked');
+    });
 });

@@ -1,9 +1,11 @@
 <div class="header">
   <div class="header-buttons">
-    <% if current_user.id == @bar.user_id %>
-    <%= link_to 'Edit', edit_bar_path(@bar), class: "button" %>
-    <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
-    <% end %>
+    <% if user_signed_in? %>
+      <% if current_user.id == @bar.user_id %>
+      <%= link_to 'Edit', edit_bar_path(@bar), class: "button" %>
+      <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+      <% end %>
+    <% end %>  
   </div>
   <h1 class="bar_title"><%= @bar.name %></h1>
 </div>
