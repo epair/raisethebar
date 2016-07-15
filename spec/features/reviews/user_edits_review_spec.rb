@@ -10,7 +10,11 @@ feature "user edits review" do
     click_link "Profile"
 
     expect(page).to have_content(review1.body)
-    click_link "Edit"
+
+    within('p') do
+      click_link "Edit"
+    end
+
     fill_in "Title", with: "The Mission"
     fill_in "Review Body", with: "Bum bah bah bah"
     choose 'review_rating_2'
@@ -20,8 +24,6 @@ feature "user edits review" do
     expect(page).to have_content("Review successfully updated!")
     expect(page).to have_content("The Mission")
     expect(page).to have_content("Bum bah bah bah")
-    expect(page).to have_content("2")
-    expect(page).to have_content("3")
   end
 
   scenario "review creator edits review unsuccessfully" do
@@ -29,7 +31,11 @@ feature "user edits review" do
     click_link "Profile"
 
     expect(page).to have_content(review1.body)
-    click_link "Edit"
+
+    within('p') do
+      click_link "Edit"
+    end
+
     fill_in "Review Body", with: ""
     fill_in "Title", with: ""
     choose 'review_rating_2'

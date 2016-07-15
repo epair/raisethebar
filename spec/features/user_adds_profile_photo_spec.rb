@@ -4,11 +4,11 @@ feature 'add profile photo' do
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'user uploads failing filetype' do
-    visit '/'
+    visit "/"
     fill_in 'Username', with: 'User'
     fill_in 'Email', with: 'user@example.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
+    fill_in 'Password (6 characters minimum)', with: 'password'
+    fill_in 'Confirm Password', with: 'password'
     attach_file 'Profile photo', "#{Rails.root}/spec/support/authentication_helper.rb"
     click_button 'Sign Up'
 

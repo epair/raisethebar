@@ -23,6 +23,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem 'capybara-webkit'
 end
 
 group :development do
