@@ -1,4 +1,5 @@
 @import "colors";
+@import "review_form";
 
 .container {
   margin: 0 auto;
@@ -76,77 +77,6 @@
   font-size: 145%;
 }
 
-.rating {
-  float: left;
-  width: 300px;
-}
-
-.pricing {
-  float: left;
-  width: 300px;
-}
-
-.form_container {
-  float: right;
-  position: relative;
-}
-
-.rate input {
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-}
-
-.rate label {
-  background: $span-background;
-  border-radius: 50%;
-  color: $span-color;
-  display: inline-block;
-  font-size: 30px;
-  height: 30px;
-  line-height: 30px;
-  margin-right: 2px;
-  text-align: center;
-  width: 30px;
-}
-
-.rate:hover ~ .rate label,
-.rate:hover label,
-.rate.checked label,
-.rate.checked ~ .rate label {
-  background: $checked-background;
-  color: $checked-color;
-}
-
-.price input {
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-}
-
-.price label {
-  background: $span-background;
-  border-radius: 50%;
-  color: $span-color;
-  display: inline-block;
-  font-size: 30px;
-  height: 30px;
-  line-height: 30px;
-  margin-right: 2px;
-  text-align: center;
-  width: 30px;
-}
-
-.price:hover ~ .price label,
-.price:hover label,
-.price.checked label,
-.price.checked ~ .price label {
-  background: $checked-background;
-  color: $checked-color;
-}
-
 .bar_title {
   width: 600px;
   margin: 0;
@@ -165,10 +95,20 @@
   width: 50%;
   float: left;
 }
-.reviews {
+.review-form {
   padding-left: 10px;
   width: 50%;
   float: left;
+}
+
+.review-title {
+  color: blue;
+}
+
+.reviews {
+  padding-top: 10px;
+  float: left;
+  width: 100%;
 }
 
 .profile_photo {
@@ -184,7 +124,4 @@
 
 .edit {
   float: right;
-}
-
-.bars {
 }

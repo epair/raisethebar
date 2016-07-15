@@ -21,6 +21,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'valid_attribute'
   gem 'dotenv-rails'
+  gem 'database_cleaner'
 end
 
 group :development do

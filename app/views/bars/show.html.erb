@@ -5,7 +5,7 @@
       <%= link_to 'Edit', edit_bar_path(@bar), class: "button" %>
       <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
       <% end %>
-    <% end %>  
+    <% end %>
   </div>
   <h1 class="bar_title"><%= @bar.name %></h1>
 </div>
@@ -20,11 +20,39 @@
   </div>
 </div>
 
-<div class="reviews">
+<div class="review-form">
   <% if current_user.nil? %>
-  <div class="callout">Please log in to write a review.</div>
+    <div class="callout">Please log in to write a review.</div>
   <% else %>
-  <%= render 'reviews/form' %>
+    <%= render 'reviews/form' %>
   <% end %>
-  <%= render @reviews %>
+</div>
+
+<div class="reviews">
+  <% @reviews.each do |review| %>
+    <p>
+      <span class="review-title"><strong><%= review.title %></strong></span>
+      <br>
+      <%= review.body %>
+      <br>
+      Rating:
+      <% review.rating.times do %>
+      <% end %>
+      <br>
+      Price:<%= review.price %>
+    </p>
+    <%= form_for ([review, @vote]) do |f| %>
+      <%= f.submit 'Upvote', class: 'upvote-submit', id: "upvote-submit-#{review.id}" %>
+      <%= f.hidden_field :upvote, value: true %>
+    <% end %>
+    <%= form_for ([review, @vote]) do |f| %>
+      <%= f.submit 'Downvote', class: 'downvote-submit', id: "downvote-submit-#{review.id}" %>
+      <%= f.hidden_field :upvote, value: false %>
+    <% end %>
+    <% if review.votes.entries.length > 0 %>
+      <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
+    <% else %>
+      <div id="review-sum-<%=review.id%>">0</div>
+    <% end %>
+  <% end %>
 </div>

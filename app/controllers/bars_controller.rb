@@ -49,6 +49,7 @@ class BarsController < ApplicationController
     @bar_photo = @bar.photo_url
     @reviews = @bar.reviews
     @review = Review.new
+    @vote = Vote.new
   end
 
   def edit

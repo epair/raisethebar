@@ -67,6 +67,7 @@ GEM
       thor (~> 0.19.1)
       tins (~> 1.6.0)
     daemons (1.2.3)
+    database_cleaner (1.5.3)
     devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -391,6 +392,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coveralls
+  database_cleaner
   devise
   dotenv-rails
   factory_girl_rails
@@ -415,4 +417,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.12.3
+   1.12.5
