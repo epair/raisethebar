@@ -6,6 +6,8 @@
 .pricing {
   float: left;
   width: 300px;
+  padding-bottom: 10px;
+  padding-top: 5px;
 }
 
 .form_container {
@@ -67,4 +69,9 @@
 
 .rate-label {
   float:left;
+  padding-top: 5px; 
+}
+
+.rate-group {
+  padding-bottom: 10px;
 }

@@ -30,40 +30,46 @@
 
 <div class="reviews">
   <% @reviews.each do |review| %>
-    <p>
-      <span class="review-title"><strong><%= review.title %></strong></span>
-      <br>
-      <%= review.body %>
-      <br>
-      Rating:
-      <% review.rating.to_i.times do %>
-        <i class="fa fa-star"></i>
-      <% end %>
-      <br>
-      Price:
-      <% review.price.to_i.times do %>
-        <i class="fa fa-usd"></i>
-      <% end %>
-    </p>
-
-    <%= form_for ([review, @vote]) do |f| %>
+    <div class="vote-container">
+      <%= form_for ([review, @vote]) do |f| %>
       <%= button_tag class: 'upvote-submit', id: "upvote-submit-#{review.id}" do %>
-        <i class="fa fa-thumbs-up"></i>
+      <i class="fa fa-thumbs-up"></i>
       <% end %>
       <%= f.hidden_field :upvote, value: true %>
-    <% end %>
+      <% end %>
 
-    <%= form_for ([review, @vote]) do |f| %>
+      <% if review.votes.entries.length > 0 %>
+      <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
+      <% else %>
+      <div id="review-sum-<%=review.id%>">0</div>
+      <% end %>
+
+      <%= form_for ([review, @vote]) do |f| %>
       <%= button_tag class: 'downvote-submit', id: "downvote-submit-#{review.id}" do %>
-        <i class="fa fa-thumbs-down"></i>
+      <i class="fa fa-thumbs-down"></i>
       <% end %>
       <%= f.hidden_field :upvote, value: false %>
-    <% end %>
+      <% end %>
+    </div>
 
-    <% if review.votes.entries.length > 0 %>
-      <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
-    <% else %>
-      <div id="review-sum-<%=review.id%>">0</div>
-    <% end %>
+    <div class="review-body">
+      <p>
+        <% review.rating.to_i.times do %>
+        <i class="fa fa-star"></i>
+        <% end %>
+        <span class="dolla-signs">
+          <% review.price.to_i.times do %>
+          <i class="fa fa-usd"></i>
+          <% end %>
+        </span>
+        <br>
+        <span class="review-title"><strong><%= review.title %></strong>
+        </span>
+        <br>
+        <%= review.body %>
+        <br>
+        <br>
+      </p>
+    </div>
   <% end %>
 </div>
