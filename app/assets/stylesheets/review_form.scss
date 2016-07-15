@@ -21,9 +21,8 @@
 }
 
 .rate label {
-  background-image: url();
   border-radius: 50%;
-  color: $span-color;
+  color: $star-color;
   display: inline-block;
   font-size: 30px;
   height: 30px;
@@ -37,8 +36,7 @@
 .rate:hover label,
 .rate.checked label,
 .rate.checked ~ .rate label {
-  background: $checked-background;
-  color: $checked-color;
+  color: #c1a823;
 }
 
 .price input {
@@ -49,9 +47,8 @@
 }
 
 .price label {
-  background: $span-background;
   border-radius: 50%;
-  color: $span-color;
+  color: $price-color;
   display: inline-block;
   font-size: 30px;
   height: 30px;
@@ -65,6 +62,9 @@
 .price:hover label,
 .price.checked label,
 .price.checked ~ .price label {
-  background: $checked-background;
-  color: $checked-color;
+  color: #0e3e0e ;
+}
+
+.rate-label {
+  float:left;
 }
