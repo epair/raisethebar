@@ -1,15 +1,16 @@
 @import "colors";
+@import "review_form";
+@import "sign_in_form";
 
-.body {
-  padding-left: 20px;
-}
-
-li {
-  list-style: none;
+.container {
+  margin: 0 auto;
+  width: 800px;
+  padding-top: 15px;
 }
 
 .address {
-  float: right;
+  padding-top: 20px;
+  float: left;
 }
 
 .top-bar {
@@ -17,11 +18,6 @@ li {
   border-bottom: solid;
   border-width: thin;
   border-bottom-color: $top-bar;
-}
-
-.new_bar {
-  padding-left: 20px;
-  margin-right: 400px;
 }
 
 .nav_element {
@@ -38,11 +34,6 @@ li {
 .listTitle {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype";
   text-align: center;
-}
-
-.profile_name {
-  text-align: left;
-  margin-left: 20px;
 }
 
 .top_nav {
@@ -87,40 +78,51 @@ li {
   font-size: 145%;
 }
 
-.rating {
-  float: left;
-  width: 300px;
+.bar_title {
+  width: 600px;
+  margin: 0;
 }
 
-.form_container {
+.header {
+  padding-bottom: 10px;
+}
+
+.header-buttons {
+  padding-top: 10px;
   float: right;
-  position: relative;
 }
 
-span input {
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
+.block {
+  width: 50%;
+  float: left;
+}
+.review-form {
+  padding-left: 10px;
+  width: 50%;
+  float: left;
 }
 
-span label {
-  background: $span-background;
-  border-radius: 50%;
-  color: $span-color;
-  display: inline-block;
-  font-size: 30px;
-  height: 30px;
-  line-height: 30px;
-  margin-right: 2px;
-  text-align: center;
-  width: 30px;
+.review-title {
+  color: blue;
 }
 
-span:hover ~ span label,
-span:hover label,
-span.checked label,
-span.checked ~ span label {
-  background: $checked-background;
-  color: $checked-color;
+.reviews {
+  padding-top: 10px;
+  float: left;
+  width: 100%;
+}
+
+.profile_photo {
+  width: 100px;
+  border-radius: 15px;
+  float: left;
+}
+
+.profile_name {
+  float: left;
+  padding-left: 10px;
+}
+
+.edit {
+  float: right;
 }

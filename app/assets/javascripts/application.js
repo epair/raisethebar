@@ -3,11 +3,17 @@
 //= require_tree .
 $(document).ready(function(){
 //  Check Radio-box
-    $(".rating input:radio").attr("checked", false);
-    $('.rating input').click(function () {
-        $(".rating span").removeClass('checked');
-        $(this).parent().addClass('checked');
-    });
+  $(".rating input:radio").attr("checked", false);
+  $('.rating input').click(function () {
+      $(".rating span").removeClass('checked');
+      $(this).parent().addClass('checked');
+  });
+
+  $(".pricing input:radio").attr("checked", false);
+  $('.pricing input').click(function () {
+      $(".pricing span").removeClass('checked');
+      $(this).parent().addClass('checked');
+  });
 
   $('.upvote-submit').on("click",function() {
     event.preventDefault();

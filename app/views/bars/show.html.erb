@@ -1,46 +1,71 @@
-<div class="body">
-  <h1><%= @bar.name %></h1>
-    <div class="callout secondary">
-      <%= @bar.description %>
-    </div>
+<div class="header">
+  <div class="header-buttons">
+    <% if user_signed_in? %>
+      <% if current_user.id == @bar.user_id %>
+      <%= link_to 'Edit', edit_bar_path(@bar), class: "button" %>
+      <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+      <% end %>
+    <% end %>
+  </div>
+    <%= image_tag @bar_photo, class: "bar_photo" %>
+  </div>
+    <h1 class="bar_title"><%= @bar.name %></h1>
+</div>
 
-    <div class="callout">
-      <%= @bar.address %>
-      <%= @bar.city %>
-      <%= @bar.state %>
-      <%= @bar.zip %>
-    </div>
-    <% if current_user.id == @bar.user_id %>
-      <%= link_to 'Edit', edit_bar_path(@bar) %>
-      <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="callout secondary block">
+  <%= @bar.description %>
+  <div class="address">
+    <%= @bar.address %>
+    <%= @bar.city %>
+    <%= @bar.state %>
+    <%= @bar.zip %>
+  </div>
+</div>
+
+<div class="review-form">
+  <% if current_user.nil? %>
+    <div class="callout">Please log in to write a review.</div>
+  <% else %>
+    <%= render 'reviews/form' %>
+  <% end %>
+</div>
+
+<div class="reviews">
+  <% @reviews.each do |review| %>
+    <p>
+      <span class="review-title"><strong><%= review.title %></strong></span>
+      <br>
+      <%= review.body %>
+      <br>
+      Rating:
+      <% review.rating.to_i.times do %>
+        <i class="fa fa-star"></i>
+      <% end %>
+      <br>
+      Price:
+      <% review.price.to_i.times do %>
+        <i class="fa fa-usd"></i>
+      <% end %>
+    </p>
+
+    <%= form_for ([review, @vote]) do |f| %>
+      <%= button_tag class: 'upvote-submit', id: "upvote-submit-#{review.id}" do %>
+        <i class="fa fa-thumbs-up"></i>
+      <% end %>
+      <%= f.hidden_field :upvote, value: true %>
     <% end %>
 
-    <%= render 'reviews/form' %> <br>
-
-    <div class="callout secondary">
-      <% @reviews.each do |review| %>
-        <p>
-          <%= review.title %>
-          <br>
-          <%= review.body %>
-          <br>
-          Rating:<%= review.rating %>
-          <br>
-          Price:<%= review.price %>
-        </p>
-        <%= form_for ([review, @vote]) do |f| %>
-          <%= f.submit 'Upvote', class: 'upvote-submit', id: "upvote-submit-#{review.id}" %>
-          <%= f.hidden_field :upvote, value: true %>
-        <% end %>
-        <%= form_for ([review, @vote]) do |f| %>
-          <%= f.submit 'Downvote', class: 'downvote-submit', id: "downvote-submit-#{review.id}" %>
-          <%= f.hidden_field :upvote, value: false %>
-        <% end %>
-        <% if review.votes.entries.length > 0 %>
-          <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
-        <% else %>
-          <div id="review-sum-<%=review.id%>">0</div>
-        <% end %>
+    <%= form_for ([review, @vote]) do |f| %>
+      <%= button_tag class: 'downvote-submit', id: "downvote-submit-#{review.id}" do %>
+        <i class="fa fa-thumbs-down"></i>
       <% end %>
-    </div>
+      <%= f.hidden_field :upvote, value: false %>
+    <% end %>
+
+    <% if review.votes.entries.length > 0 %>
+      <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
+    <% else %>
+      <div id="review-sum-<%=review.id%>">0</div>
+    <% end %>
+  <% end %>
 </div>

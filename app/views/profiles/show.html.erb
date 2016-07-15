@@ -1,28 +1,27 @@
-<div class="profile_body">
-  <%= link_to 'Edit Account Info', edit_user_registration_path %>
-
+<div class="header">
+  <%= link_to 'Edit', edit_user_registration_path, class: "edit button" %>
+  <%= image_tag @users_photo, class: "profile_photo" %>
   <h1 class="profile_name"><%= @users_name %></h1>
-  <%= image_tag @users_photo %>
+</div>
 
+
+<div class="bars">
+  <% @users_bar.each do |bar|%>
   <div>
-    <% @users_bar.each do |bar|%>
-    <div>
-      <%= link_to bar.name, bar_path(bar)  %>
-    </div>
-    <% end %>
+    <%= link_to bar.name, bar_path(bar)  %>
   </div>
+  <% end %>
+</div>
 
+<div>
+  <% @users_review.each do |review|%>
   <div>
-    <% @users_review.each do |review|%>
-    <div>
-      <%= review.title %>
-      <%= review.body %>
-      <%= review.rating %>
-      <%= review.price %>
-      <%= link_to "Edit", [:edit, review.bar, review]  %>
-      <%= link_to 'Delete', [review.bar, review], method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-    <% end %>
+    <%= review.title %>
+    <%= review.body %>
+    <%= review.rating %>
+    <%= review.price %>
+    <%= link_to "Edit", [:edit, review.bar, review]  %>
+    <%= link_to 'Delete', [review.bar, review], method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
-
+  <% end %>
 </div>
