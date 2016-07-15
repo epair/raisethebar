@@ -1,15 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
@@ -20,4 +8,45 @@ $(document).ready(function(){
         $(".rating span").removeClass('checked');
         $(this).parent().addClass('checked');
     });
+
+  $('.upvote-submit').on("click",function() {
+    event.preventDefault();
+    var id = this.id.replace('upvote-submit-', '');
+    var path = '/api/reviews/' + id + '/votes.json';
+    var vote = {
+      vote: { upvote: true }
+    };
+
+    var request = $.ajax({
+      url: path,
+      method: "POST",
+      dataType: "json",
+      data: vote
+    });
+
+    request.done(function(data) {
+      var voteCount = document.getElementById('review-sum-' + id);
+      voteCount.innerHTML = data.data;
+    })
+  });
+
+  $('.downvote-submit').on("click", function(){
+    event.preventDefault();
+    var id = this.id.replace('downvote-submit-', '');
+    var path = '/api/reviews/' + id + '/votes.json';
+
+    var request = $.ajax({
+      url: path,
+      method: "POST",
+      dataType: "json",
+      data: {
+        vote: {upvote: false}
+      }
+    });
+
+    request.done(function(data) {
+      var voteCount = document.getElementById('review-sum-' + id);
+      voteCount.innerHTML = data.data;
+    })
+  });
 });
