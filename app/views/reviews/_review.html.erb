@@ -3,4 +3,7 @@
   <%= review.body %>
   <%= review.rating %>
   <%= review.price %>
+  <% if current_user && current_user.admin? %>
+  <%= link_to 'Delete Review', "#{@bar.id}/reviews/#{review.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 </p>

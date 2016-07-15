@@ -1,8 +1,4 @@
-class UsersController < ApplicationController
-
-  def admin?
-    role == "admin"
-  end
+class MembersController < ApplicationController
 
   def index
     @users = User.all
@@ -21,10 +17,10 @@ class UsersController < ApplicationController
     if current_user.admin?
     @user = User.find(params[:id])
     @user.destroy
-  end
 
+  end
     if @user.destroy
-    redirect_to users_path, notice: "User Deleted"
-    end
+    redirect_to members_path, notice: "User Deleted"
+  end
   end
 end

@@ -11,8 +11,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:username]
 
 
-  def admin?
-    role == "admin"
-  end
+         def admin?
+           role == "admin"
+         end
+
 
 end

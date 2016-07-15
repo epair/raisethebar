@@ -16,15 +16,11 @@
       <%= link_to "RaiseTheBar", bars_path %>
     </section>
     <section class="top_nav">
-      <% if current_user.admin? %>
-      <div class="nav_element" id="admin_info"><%= link_to 'Admin Power', users_path%></div>
+      <% if current_user && current_user.admin? %>
+      <div class="nav_element" id="admin_info"><%= link_to 'Admin Power', members_path%></div>
       <% end %>
-      <% if user_signed_in? %>
-      <div id="sign_out" class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
-      <div class="nav_element"><%= link_to 'Profile', profile_path(current_user) %></div>
-      <% else %>
+      <% if current_user.nil? %>
       <div class="nav_element" id="sign_in"><%= link_to 'Sign In', user_session_path%></div>
-      <% end %>
       <div class="nav_element"><%= link_to 'Home', bars_path %>
       </section>
       <section class="search_bar" >
@@ -37,6 +33,23 @@
             <input class="submitbutton" type="submit" name="commit" value="Search">
           </li>
         </ul>
+        <% end %>
+        <% elsif current_user %>
+        <div class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
+        <div class="nav_element"><%= link_to 'Profile', profile_path(current_user) %></div>
+        <div class="nav_element"><%= link_to 'Home', bars_path %>
+        </section>
+        <section class="search_bar" >
+          <%= form_tag("/bars/search", method: "get") do %>
+          <ul class="menu">
+            <li>
+              <input type="text" name="q" id="q">
+            </li>
+            <li class="search_submit_li">
+              <input class="submitbutton" type="submit" name="commit" value="Search">
+            </li>
+          </ul>
+          <% end %>
         <% end %>
       </section>
     </div>
