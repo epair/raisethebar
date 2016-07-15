@@ -22,6 +22,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'dotenv-rails'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end
 
 group :development do
