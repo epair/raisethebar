@@ -2,6 +2,10 @@ require 'coveralls'
 Coveralls.wear!('rails')
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
