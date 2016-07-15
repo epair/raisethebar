@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RaiseTheBar</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
   <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>RaiseTheBar</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
 </head>
 <body>
   <div class="top-bar" data-topbar role='navigation'>
@@ -47,9 +47,10 @@
       <%= content_tag :div, msg, class: "callout alert" %>
     <% end %>
   <% end %>
-
-  <div class="container">
-    <%= yield %>
+  <div class="background">
+    <div class="container">
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>
