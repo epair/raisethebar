@@ -52,12 +52,17 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.11.1)
+      capybara (>= 2.3.0, < 2.8.0)
+      json
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     coveralls (0.8.13)
@@ -67,6 +72,7 @@ GEM
       thor (~> 0.19.1)
       tins (~> 1.6.0)
     daemons (1.2.3)
+    database_cleaner (1.5.3)
     devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -88,6 +94,7 @@ GEM
     factory_girl_rails (4.7.0)
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
+    ffi (1.9.14)
     file_validators (2.1.0)
       activemodel (>= 3.0)
       mime-types (>= 1.0)
@@ -328,6 +335,7 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    rubyzip (1.2.0)
     sass (3.4.22)
     sass-rails (5.0.5)
       railties (>= 4.0.0, < 6)
@@ -335,6 +343,10 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selenium-webdriver (2.53.4)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
     simplecov (0.11.2)
@@ -380,6 +392,7 @@ GEM
     valid_attribute (2.0.0)
     warden (1.2.6)
       rack (>= 1.0)
+    websocket (1.2.3)
     xml-simple (1.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -389,8 +402,10 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  capybara-webkit
   carrierwave
   coveralls
+  database_cleaner
   devise
   dotenv-rails
   factory_girl_rails
@@ -407,6 +422,7 @@ DEPENDENCIES
   rails_12factor
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
+  selenium-webdriver
   shoulda-matchers
   uglifier (>= 1.3.0)
   valid_attribute
@@ -415,4 +431,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.12.3
+   1.12.5

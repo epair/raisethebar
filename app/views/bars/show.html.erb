@@ -15,12 +15,43 @@
       <%= @bar.state %>
       <%= @bar.zip %>
     </div>
-    <%= render 'reviews/form' %>
-    <%= render @reviews %> <br>
+
     <% end %>
     <% if current_user.id == @bar.user_id %>
     <%= link_to 'Edit', edit_bar_path(@bar) %>
     <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
 
+
+    <%= render 'reviews/form' %> <br>
+
+    <div class="callout secondary">
+      <% @reviews.each do |review| %>
+        <p>
+          <%= review.title %>
+          <br>
+          <%= review.body %>
+          <br>
+          Rating:<%= review.rating %>
+          <br>
+          Price:<%= review.price %>
+          <% if current_user && current_user.admin? %>
+          <%= link_to 'Delete Review', "#{@bar.id}/reviews/#{review.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </p>
+        <%= form_for ([review, @vote]) do |f| %>
+          <%= f.submit 'Upvote', class: 'upvote-submit', id: "upvote-submit-#{review.id}" %>
+          <%= f.hidden_field :upvote, value: true %>
+        <% end %>
+        <%= form_for ([review, @vote]) do |f| %>
+          <%= f.submit 'Downvote', class: 'downvote-submit', id: "downvote-submit-#{review.id}" %>
+          <%= f.hidden_field :upvote, value: false %>
+        <% end %>
+        <% if review.votes.entries.length > 0 %>
+          <div id="review-sum-<%=review.id%>"><%= review.vote_counter(review.votes)%></div>
+        <% else %>
+          <div id="review-sum-<%=review.id%>">0</div>
+        <% end %>
+      <% end %>
+    </div>
 </div>

@@ -21,6 +21,9 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'valid_attribute'
   gem 'dotenv-rails'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end
 
 group :development do
