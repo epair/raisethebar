@@ -9,6 +9,8 @@ feature 'user deletes bar' do
   let!(:bar) { FactoryGirl.create(:bar, user_id: user.id) }
 
   scenario 'user visits bar show page and deletes bar' do
+    visit '/'
+    click_link 'Sign In'
     login_user(user)
     click_link bar.name
     click_link 'Delete'

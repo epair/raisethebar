@@ -9,7 +9,7 @@ $(document).ready(function(){
         $(this).parent().addClass('checked');
     });
 
-  $('.upvote-submit').on("click",function() {
+  $('.upvote-submit').on("click",function(event) {
     event.preventDefault();
     var id = this.id.replace('upvote-submit-', '');
     var path = '/api/reviews/' + id + '/votes.json';
@@ -30,7 +30,7 @@ $(document).ready(function(){
     })
   });
 
-  $('.downvote-submit').on("click", function(){
+  $('.downvote-submit').on("click", function(event){
     event.preventDefault();
     var id = this.id.replace('downvote-submit-', '');
     var path = '/api/reviews/' + id + '/votes.json';

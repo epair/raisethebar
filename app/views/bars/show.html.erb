@@ -1,5 +1,10 @@
 <div class="body">
+  <% if !user_signed_in? || user_signed_in? %>
   <h1><%= @bar.name %></h1>
+  <% if current_user && current_user.admin? %>
+  <%= link_to 'Delete Bar (Admin Power)', @bar , method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
     <div class="callout secondary">
       <%= @bar.description %>
     </div>
@@ -10,10 +15,13 @@
       <%= @bar.state %>
       <%= @bar.zip %>
     </div>
-    <% if current_user.id == @bar.user_id %>
-      <%= link_to 'Edit', edit_bar_path(@bar) %>
-      <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
+
     <% end %>
+    <% if current_user.id == @bar.user_id %>
+    <%= link_to 'Edit', edit_bar_path(@bar) %>
+    <%= link_to 'Delete', @bar, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+
 
     <%= render 'reviews/form' %> <br>
 
@@ -27,6 +35,9 @@
           Rating:<%= review.rating %>
           <br>
           Price:<%= review.price %>
+          <% if current_user && current_user.admin? %>
+          <%= link_to 'Delete Review', "#{@bar.id}/reviews/#{review.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </p>
         <%= form_for ([review, @vote]) do |f| %>
           <%= f.submit 'Upvote', class: 'upvote-submit', id: "upvote-submit-#{review.id}" %>

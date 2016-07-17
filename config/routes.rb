@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :members
   devise_for :users, controllers: { registrations: "registrations" }
   as :user do
-    get '/' => 'devise/registrations#new'
+    get '/' => 'bars#index'
   end
   resources :bars do
     resources :reviews
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :reviews, only: [:edit, :destroy]
 
   resources :reviews, only: [:show] do
     resources :votes, only: [:create]

@@ -1,0 +1,10 @@
+<div class="admin_list">
+  <h1 class="listTitle"> List of Users</h1>
+  </div>
+    <% @users.each do |user| %>
+    <%= user.username %>
+    <div class="add_link">
+<%= link_to "Delete #{user.username}", "members/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <% end %>
+  </div>
