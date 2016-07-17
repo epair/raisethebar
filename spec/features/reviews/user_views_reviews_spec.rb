@@ -10,7 +10,5 @@ feature "user views reviews" do
     click_link bar.name
 
     expect(page).to have_content(review1.body)
-    expect(page).to have_content(review1.rating)
-    expect(page).to have_content(review1.price)
   end
 end

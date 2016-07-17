@@ -7,8 +7,8 @@ feature 'sign up' do
     click_link 'Sign up'
     fill_in 'Username', with: 'User'
     fill_in 'Email', with: 'user@example.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
+    fill_in 'Password (6 characters minimum)', with: 'password'
+    fill_in 'Confirm Password', with: 'password'
     click_button 'Sign Up'
 
     expect(page).to have_content("Welcome! You have signed up successfully.")

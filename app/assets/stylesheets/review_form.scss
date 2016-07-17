@@ -1,0 +1,84 @@
+.rating {
+  float: left;
+  width: 300px;
+}
+
+.pricing {
+  float: left;
+  width: 300px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+
+.form_container {
+  float: right;
+  position: relative;
+}
+
+.rate input {
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+.rate label {
+  border-radius: 50%;
+  color: $star-color;
+  display: inline-block;
+  font-size: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 2px;
+  text-align: center;
+  width: 30px;
+}
+
+.rate:hover ~ .rate label,
+.rate:hover label,
+.rate.checked label,
+.rate.checked ~ .rate label {
+  color: #c1a823;
+}
+
+.price input {
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+.price label {
+  border-radius: 50%;
+  color: $price-color;
+  display: inline-block;
+  font-size: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 2px;
+  text-align: center;
+  width: 30px;
+}
+
+.price:hover ~ .price label,
+.price:hover label,
+.price.checked label,
+.price.checked ~ .price label {
+  color: #0e3e0e ;
+}
+
+.rate-label {
+  float:left;
+  padding-top: 5px;
+}
+
+.rate-group {
+  padding-bottom: 10px;
+}
+
+#review-form {
+  height: 300px;
+}
+.form-submit {
+  margin-bottom: -100px;
+}

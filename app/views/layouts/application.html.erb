@@ -1,45 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RaiseTheBar</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
   <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>RaiseTheBar</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
 </head>
 <body>
-  <nav class="top-bar" data-topbar role='navigation'>
+  <div class="top-bar" data-topbar role='navigation'>
     <section class="raisetitle">
       <%= link_to "RaiseTheBar", bars_path %>
     </section>
+
     <section class="top_nav">
-      <% if current_user && current_user.admin? %>
-      <div class="nav_element" id="admin_info"><%= link_to 'Admin Power', members_path%></div>
+      <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <div class="nav_element" id="admin_info"><%= link_to 'Admin Power', members_path%></div>
+          <% end %>
+          <div id="sign_out" class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
+          <div class="nav_element"><%= link_to 'Profile', profile_path(current_user) %></div>
+      <% else %>
+        <div id="sign_in" class="nav_element"><%= link_to 'Sign In', new_user_session_path %></div>
       <% end %>
-      <% if current_user.nil? %>
-      <div class="nav_element" id="sign_in"><%= link_to 'Sign In', user_session_path%></div>
-      <div class="nav_element"><%= link_to 'Home', bars_path %>
-      </section>
+      <div class="nav_element"><%= link_to 'Home', bars_path %></div>
+      <br>
       <section class="search_bar" >
         <%= form_tag("/bars/search", method: "get") do %>
-        <ul class="menu">
-          <li>
-            <input type="text" name="q" id="q">
-          </li>
-          <li class="search_submit_li">
-            <input class="submitbutton" type="submit" name="commit" value="Search">
-          </li>
-        </ul>
-        <% end %>
-        <% elsif current_user %>
-        <div class="nav_element"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
-        <div class="nav_element"><%= link_to 'Profile', profile_path(current_user) %></div>
-        <div class="nav_element"><%= link_to 'Home', bars_path %>
-        </section>
-        <section class="search_bar" >
-          <%= form_tag("/bars/search", method: "get") do %>
           <ul class="menu">
             <li>
               <input type="text" name="q" id="q">
@@ -48,17 +37,22 @@
               <input class="submitbutton" type="submit" name="commit" value="Search">
             </li>
           </ul>
-          <% end %>
         <% end %>
       </section>
+    </section>
+  </div>
+
+  <div class="background">
+    <% flash.each do |name, msg| %>
+      <% if name == "success" || name == "notice" %>
+        <%= content_tag :div, msg, class: "callout success" %>
+      <% else %>
+        <%= content_tag :div, msg, class: "callout alert" %>
+      <% end %>
+    <% end %>
+    <div class="container">
+      <%= yield %>
     </div>
-  </nav>
-
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: "alert alert-info" %>
-  <% end %>
-
-<%= yield %>
-
+  </div>
 </body>
 </html>

@@ -16,8 +16,6 @@ feature "user creates review" do
     click_button "Create Review"
 
     expect(page).to have_content("place sucked!")
-    expect(page).to have_content("2")
-    expect(page).to have_content("3")
   end
 
   scenario "user fills out review creation form unsuccessfully" do
