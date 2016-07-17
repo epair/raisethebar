@@ -68,17 +68,19 @@
                 <i class="fa fa-usd"></i>
               <% end %>
             </span>
-            <span class="posted">Posted by: <%= review.user.username %></span>
+            <% if !review.user.nil? %>
+              <span class="posted">Posted by: <%= review.user.username %></span>
+            <% end %>
             <br>
             <span class="review-title"><strong><%= review.title %></strong></span>
             <br>
             <%= review.body %>
             <br>
-            <% if current_user.admin? %>
-              <%= link_to 'Delete', "#{@bar.id}/reviews/#{review.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
-            <% end %>
           </p>
         </div>
+        <% if current_user.admin? %>
+        <%= link_to 'Delete', "#{@bar.id}/reviews/#{review.id}", method: :delete, data: { confirm: 'Are you sure?' }, id: "review-delete" %>
+        <% end %>
       </div>
     <% end %>
   </div>

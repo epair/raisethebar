@@ -3,6 +3,14 @@
 @import "bar_page";
 @import "profile";
 
+a {
+  color: $font-color;
+}
+
+li {
+  list-style: none;
+}
+
 .background {
   background-image: url("background.jpg");
   background-repeat: no-repeat;
@@ -104,6 +112,6 @@
   float: right;
 }
 
-a {
-  color: $font-color;
+.member {
+  font-size: 1.3em;
 }
