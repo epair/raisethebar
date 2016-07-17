@@ -9,20 +9,11 @@ feature 'admin logs in and deletes a user' do
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'create a user and admin logs in and deletes user' do
-    visit '/'
-    click_link 'Sign In'
-    login_user(user)
-    click_link 'Sign Out'
-    visit '/'
-    click_link 'Sign In'
     login_user(admin)
     click_link 'Admin Power'
-
-    expect(page).to have_content("Delete #{user.username}")
-    expect(page).to have_content("Delete #{admin.username}")
-
-    click_link "Delete #{user.username}"
+    first(:link, "Delete").click
 
     expect(page).to have_content("User Deleted")
+    expect(page).to_not have_content(user.username)
   end
 end
