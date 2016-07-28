@@ -39,10 +39,15 @@ class BarsController < ApplicationController
 
   def new
     @bar = Bar.new
+    if current_user.nil?
+      flash[:errors] = "Please sign in to add a bar!"
+      redirect_to bars_path
+    end
   end
 
   def show
     @bar = Bar.find(params[:id])
+    @bar_photo = @bar.photo_url
     @reviews = @bar.reviews
     @review = Review.new
     @vote = Vote.new

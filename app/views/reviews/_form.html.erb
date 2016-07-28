@@ -1,63 +1,85 @@
 <%= form_for([@bar, @review]) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, placeholder: "Title" %>
 
-  <%= f.label :body, "Review Body" %>
-  <%= f.text_field :body %>
+  <%= f.text_field :body, placeholder: "Review Body" %>
 
-  <div class="rating rate">
-    <span class="form_container">
-      <%= f.radio_button(:rating, "5") %>
-      <%= f.label(:rating_5, "5") %>
-    </span>
+  <div class="rate-group">
+    <span class="rate-label">Rating:</span>
+    <div class="rating">
+      <span class="form_container rate">
+        <%= f.radio_button(:rating, "5") %>
+        <%= f.label(:rating_5, "5") do %>
+        <i class="fa fa-star"></i>
+        <% end %>
+      </span>
 
-    <span class="form_container">
-      <%= f.radio_button(:rating, "4") %>
-      <%= f.label(:rating_4, "4") %>
-    </span>
+      <span class="form_container rate">
+        <%= f.radio_button(:rating, "4") %>
+        <%= f.label(:rating_4, "4") do %>
+        <i class="fa fa-star"></i>
+        <% end %>
+      </span>
 
-    <span class="form_container">
-      <%= f.radio_button(:rating, "3") %>
-      <%= f.label(:rating_3, "3") %>
-    </span>
+      <span class="form_container rate">
+        <%= f.radio_button(:rating, "3") %>
+        <%= f.label(:rating_3, "3") do %>
+        <i class="fa fa-star"></i>
+        <% end %>
+      </span>
 
-    <span class="form_container">
-      <%= f.radio_button(:rating, "2") %>
-      <%= f.label(:rating_2, "2") %>
-    </span>
+      <span class="form_container rate">
+        <%= f.radio_button(:rating, "2") %>
+        <%= f.label(:rating_2, "2") do %>
+        <i class="fa fa-star"></i>
+        <% end %>
+      </span>
 
-    <span class="form_container">
-      <%= f.radio_button(:rating, "1") %>
-      <%= f.label(:rating_1, "1") %>
-    </span>
+      <span class="form_container rate">
+        <%= f.radio_button(:rating, "1") %>
+        <%= f.label(:rating_1, "1") do %>
+        <i class="fa fa-star"></i>
+        <% end %>
+      </span>
+    </div>
+
+    <span class="rate-label">Price:</span>
+    <div class="pricing">
+      <span class="form_container price">
+        <%= f.radio_button(:price, "5") %>
+        <%= f.label(:price_5, "5") do %>
+        <i class="fa fa-usd"></i>
+        <% end %>
+      </span>
+
+      <span class="form_container price">
+        <%= f.radio_button(:price, "4") %>
+        <%= f.label(:price_4, "4") do %>
+        <i class="fa fa-usd"></i>
+        <% end %>
+      </span>
+
+      <span class="form_container price">
+        <%= f.radio_button(:price, "3") %>
+        <%= f.label(:price_3, "3") do %>
+        <i class="fa fa-usd"></i>
+        <% end %>
+      </span>
+
+      <span class="form_container price">
+        <%= f.radio_button(:price, "2") %>
+        <%= f.label(:price_2, "2") do %>
+        <i class="fa fa-usd"></i>
+        <% end %>
+      </span>
+
+      <span class="form_container price">
+        <%= f.radio_button(:price, "1") %>
+        <%= f.label(:price_1, "1") do %>
+        <i class="fa fa-usd"></i>
+        <% end %>
+      </span>
+    </div>
   </div>
 
-  <div class="rating price">
-    <span class="form_container">
-      <%= f.radio_button(:price, "5") %>
-      <%= f.label(:price_5, "5") %>
-    </span>
-
-    <span class="form_container">
-      <%= f.radio_button(:price, "4") %>
-      <%= f.label(:price_4, "4") %>
-    </span>
-
-    <span class="form_container">
-      <%= f.radio_button(:price, "3") %>
-      <%= f.label(:price_3, "3") %>
-    </span>
-
-    <span class="form_container">
-      <%= f.radio_button(:price, "2") %>
-      <%= f.label(:price_2, "2") %>
-    </span>
-
-    <span class="form_container">
-      <%= f.radio_button(:price, "1") %>
-      <%= f.label(:price_1, "1") %>
-    </span>
-  </div>
-
-  <%= f.submit %>
+  <div class="form-submit"><%= f.submit%></div>
 <% end %>

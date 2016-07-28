@@ -1,28 +1,41 @@
-<div class="profile_body">
-  <%= link_to 'Edit Account Info', edit_user_registration_path %>
+<div class="header">
+  <div class="header-buttons">
+    <%= link_to 'Edit', edit_user_registration_path, class: "edit button" %>
+  </div>
+  <%= image_tag @users_photo, class: "profile_photo" %>
+  <h1 class="username"><%= @users_name %></h1>
+</div>
 
-  <h1 class="profile_name"><%= @users_name %></h1>
-  <%= image_tag @users_photo %>
-
-  <div>
+<div class="body-container">
+  <div class="my-bars">
+    <h5>Bars I've Created</h5>
     <% @users_bar.each do |bar|%>
-    <div>
       <%= link_to bar.name, bar_path(bar)  %>
-    </div>
     <% end %>
   </div>
 
-  <div>
+  <div class="my-reviews row">
+    <h5>Reviews I've Created</h5>
     <% @users_review.each do |review|%>
-    <div>
-      <%= review.title %>
-      <%= review.body %>
-      <%= review.rating %>
-      <%= review.price %>
-      <%= link_to "Edit", [:edit, review.bar, review]  %>
-      <%= link_to 'Delete', [review.bar, review], method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+      <div class="review-body small-6 columns">
+        <p>
+          <% review.rating.to_i.times do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+          <span class="dolla-signs">
+            <% review.price.to_i.times do %>
+              <i class="fa fa-usd"></i>
+            <% end %>
+          </span>
+          <br>
+          <span class="review-title"><strong><%= review.title %></strong></span>
+          <br>
+          <%= review.body %>
+          <br>
+          <%= link_to "Edit", [:edit, review.bar, review]  %>
+          <%= link_to 'Delete', [review.bar, review], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
     <% end %>
   </div>
-
 </div>
