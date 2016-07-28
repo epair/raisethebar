@@ -68,7 +68,7 @@
                 <i class="fa fa-usd"></i>
               <% end %>
             </span>
-            <% if review.user.nil? %>
+            <% if !review.user.nil? %>
               <span class="posted">Posted by: <%= review.user.username %></span>
             <% end %>
             <br>
@@ -78,8 +78,10 @@
             <br>
           </p>
         </div>
-        <% if current_user.admin? %>
-        <%= link_to 'Delete', "#{@bar.id}/reviews/#{review.id}", method: :delete, data: { confirm: 'Are you sure?' }, id: "review-delete" %>
+        <% if !current_user.nil? %>
+          <% if current_user.admin? %>
+          <%= link_to 'Delete', "#{@bar.id}/reviews/#{review.id}", method: :delete, data: { confirm: 'Are you sure?' }, id: "review-delete" %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
