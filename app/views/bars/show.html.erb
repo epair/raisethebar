@@ -68,7 +68,7 @@
                 <i class="fa fa-usd"></i>
               <% end %>
             </span>
-            <% if !review.user.nil? %>
+            <% if review.user.nil? %>
               <span class="posted">Posted by: <%= review.user.username %></span>
             <% end %>
             <br>
