@@ -7,6 +7,7 @@
 RaiseTheBar
 README
 Heroku URL: https://intense-eyrie-92860.herokuapp.com/
+
 Authors:
 - Mia Buckland
 - Frank Cardillo
