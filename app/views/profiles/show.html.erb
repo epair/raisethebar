@@ -14,10 +14,10 @@
     <% end %>
   </div>
 
-  <div class="my-reviews">
+  <div class="my-reviews row">
     <h5>Reviews I've Created</h5>
     <% @users_review.each do |review|%>
-      <div class="review-body">
+      <div class="review-body small-6 columns">
         <p>
           <% review.rating.to_i.times do %>
             <i class="fa fa-star"></i>

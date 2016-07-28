@@ -33,9 +33,9 @@
     <% end %>
   </div>
 
-  <div class="reviews">
+  <div class="reviews rows">
     <% @reviews.each do |review| %>
-      <div class="individual-review">
+      <div class="individual-review small-6 columns">
         <div class="vote-container">
           <%= form_for ([review, @vote]) do |f| %>
             <%= button_tag class: 'upvote-submit', id: "upvote-submit-#{review.id}" do %>
